@@ -26,7 +26,6 @@
   a{ color:inherit; text-decoration:none; }
   .wrap{ width:min(1180px, 92vw); margin:0 auto; }
 
-  /* Header */
   header{
     position:fixed; top:0; left:0; right:0; z-index:50;
     transition:background .25s ease, box-shadow .25s ease, padding .25s ease;
@@ -46,7 +45,6 @@
   .btn-ghost{ background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.18); }
   @media(max-width:820px){ .nav-links{ display:none; } }
 
-  /* Hero */
   .hero{ position:relative; height:100vh; min-height:640px; overflow:hidden; background:radial-gradient(120% 90% at 70% 10%, #14203a 0%, var(--ink) 45%, var(--ink-2) 100%); }
   #car{ position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; }
   .hero::after{ content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg, rgba(8,11,20,.85) 0%, rgba(8,11,20,.35) 38%, rgba(8,11,20,0) 60%), linear-gradient(0deg, var(--ink-2) 2%, rgba(10,14,23,0) 30%); }
@@ -59,13 +57,11 @@
   .hero-cta{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
   .scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.5); font-size:12px; letter-spacing:.18em; text-transform:uppercase; }
 
-  /* Sections */
   section.block{ padding:clamp(64px,9vw,120px) 0; }
   .eyebrow{ color:var(--blau-tief); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; }
   h2{ margin-top:12px; font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.02em; line-height:1.05; }
   .section-sub{ margin-top:16px; color:var(--muted); font-size:18px; max-width:54ch; line-height:1.6; }
 
-  /* Leistungen */
   .grid{ margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
   @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
   @media(max-width:600px){ .grid{ grid-template-columns:1fr; } }
@@ -76,13 +72,11 @@
   .card h3{ font-size:20px; font-weight:700; }
   .card p{ margin-top:10px; color:var(--muted); font-size:15.5px; line-height:1.55; }
 
-  /* Stats */
   .stats{ background:var(--ink-2); color:#fff; border-radius:24px; padding:clamp(34px,5vw,56px); display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
   @media(max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); } }
   .stat .num{ font-size:clamp(34px,4vw,52px); font-weight:900; letter-spacing:-.02em; background:linear-gradient(120deg,#fff,#a9c7ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .stat .lbl{ margin-top:6px; color:rgba(255,255,255,.62); font-size:14.5px; }
 
-  /* Reviews */
   .reviews{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; }
   @media(max-width:900px){ .reviews{ grid-template-columns:1fr; } }
   .review{ background:var(--hell); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
@@ -90,7 +84,6 @@
   .review p{ margin-top:12px; font-size:16px; line-height:1.6; }
   .review .who{ margin-top:16px; font-weight:700; font-size:14.5px; }
 
-  /* Kontakt */
   .contact{ background:radial-gradient(120% 130% at 80% 0%, #16243f 0%, var(--ink) 55%, var(--ink-2) 100%); color:#fff; border-radius:24px; padding:clamp(38px,6vw,72px); display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; }
   @media(max-width:820px){ .contact{ grid-template-columns:1fr; } }
   .contact h2{ color:#fff; }
@@ -101,8 +94,7 @@
   .info .row b{ display:block; font-size:15px; }
   .info .row span{ color:rgba(255,255,255,.66); font-size:14.5px; }
 
-  /* Footer */
-  footer{ background:var(--ink-2); color:rgba(255,255,255,.6); padding:40px 0; margin-top:0; }
+  footer{ background:var(--ink-2); color:rgba(255,255,255,.6); padding:40px 0; }
   .foot{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; font-size:14px; }
   .foot .brand{ font-size:18px; }
 </style>
@@ -122,7 +114,6 @@
   </div>
 </header>
 
-<!-- HERO mit 3D-Auto -->
 <section class="hero">
   <canvas id="car"></canvas>
   <div class="wrap hero-inner">
@@ -137,7 +128,6 @@
   <div class="scroll-hint">scrollen</div>
 </section>
 
-<!-- LEISTUNGEN -->
 <section class="block" id="leistungen">
   <div class="wrap">
     <p class="eyebrow">Leistungen</p>
@@ -154,7 +144,6 @@
   </div>
 </section>
 
-<!-- STATS / UEBER -->
 <section class="block" id="ueber" style="padding-top:0;">
   <div class="wrap">
     <div class="stats">
@@ -166,7 +155,6 @@
   </div>
 </section>
 
-<!-- BEWERTUNGEN -->
 <section class="block" id="bewertungen" style="padding-top:0;">
   <div class="wrap">
     <p class="eyebrow">Bewertungen</p>
@@ -179,7 +167,6 @@
   </div>
 </section>
 
-<!-- KONTAKT -->
 <section class="block" id="kontakt" style="padding-top:0;">
   <div class="wrap">
     <div class="contact">
@@ -224,73 +211,77 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const canvas = document.getElementById('car');
 let renderer, scene, camera, grid;
-const wheels = [];
+const pivot = new THREE.Group();
 let carReady = false;
+
+function shadowTexture(){
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const x = c.getContext('2d');
+  const g = x.createRadialGradient(128,128,8,128,128,128);
+  g.addColorStop(0,'rgba(0,0,0,0.55)');
+  g.addColorStop(0.55,'rgba(0,0,0,0.22)');
+  g.addColorStop(1,'rgba(0,0,0,0)');
+  x.fillStyle = g; x.fillRect(0,0,256,256);
+  return new THREE.CanvasTexture(c);
+}
 
 function init(){
   renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.0;
+  renderer.toneMappingExposure = 1.05;
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0x0a0e17, 12, 46);
+  scene.fog = new THREE.Fog(0x0a0e17, 16, 60);
 
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
-  camera = new THREE.PerspectiveCamera(40, 2, 0.1, 100);
-  camera.position.set(4.6, 1.5, -5.2);
+  camera = new THREE.PerspectiveCamera(38, 2, 0.1, 200);
+  camera.position.set(5.2, 1.9, 6.4);
 
-  // bewegender Boden (Fahrt-Illusion)
-  grid = new THREE.GridHelper(120, 48, 0x2f7bff, 0x1b2740);
-  grid.material.opacity = 0.18;
-  grid.material.transparent = true;
-  grid.material.depthWrite = false;
+  scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x0a0e17, 0.6));
+  const d1 = new THREE.DirectionalLight(0xffffff, 2.2); d1.position.set(6, 9, 4); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0x88aaff, 1.0); d2.position.set(-7, 4, -5); scene.add(d2);
+
+  grid = new THREE.GridHelper(160, 64, 0x2f7bff, 0x1b2740);
+  grid.material.opacity = 0.16; grid.material.transparent = true; grid.material.depthWrite = false;
   scene.add(grid);
 
-  const key = new THREE.DirectionalLight(0xffffff, 1.1);
-  key.position.set(5, 8, -3);
-  scene.add(key);
+  const shadow = new THREE.Mesh(
+    new THREE.PlaneGeometry(6.4, 3.2),
+    new THREE.MeshBasicMaterial({ map:shadowTexture(), transparent:true, depthWrite:false, opacity:0.9, toneMapped:false })
+  );
+  shadow.rotation.x = -Math.PI/2; shadow.position.y = 0.012; shadow.renderOrder = 1;
+  scene.add(shadow);
 
+  scene.add(pivot);
   loadCar();
-  window.addEventListener('resize', resize);
-  resize();
+  window.addEventListener('resize', resize); resize();
   renderer.setAnimationLoop(render);
 }
 
 function loadCar(){
-  const body = new THREE.MeshPhysicalMaterial({ color:0x123a8c, metalness:1.0, roughness:0.45, clearcoat:1.0, clearcoatRoughness:0.04 });
-  const details = new THREE.MeshStandardMaterial({ color:0xdfe6f2, metalness:1.0, roughness:0.4 });
-  const glass = new THREE.MeshPhysicalMaterial({ color:0x111722, metalness:0.25, roughness:0.05, transmission:0.92, transparent:true });
-
-  const shadow = new THREE.TextureLoader().load('ferrari_ao.png');
-
   const draco = new DRACOLoader();
   draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
   const loader = new GLTFLoader();
   loader.setDRACOLoader(draco);
-
-  loader.load('ferrari.glb', (gltf)=>{
-    const car = gltf.scene.children[0];
-    const set = (n,m)=>{ const o=car.getObjectByName(n); if(o) o.material=m; };
-    set('body', body);
-    ['rim_fl','rim_fr','rim_rr','rim_rl','trim'].forEach(n=>set(n, details));
-    set('glass', glass);
-    ['wheel_fl','wheel_fr','wheel_rl','wheel_rr'].forEach(n=>{ const w=car.getObjectByName(n); if(w) wheels.push(w); });
-
-    const mesh = new THREE.Mesh(
-      new THREE.PlaneGeometry(0.655*4, 1.3*4),
-      new THREE.MeshBasicMaterial({ map:shadow, blending:THREE.MultiplyBlending, toneMapped:false, transparent:true })
-    );
-    mesh.rotation.x = -Math.PI/2;
-    mesh.renderOrder = 2;
-    car.add(mesh);
-
-    scene.add(car);
+  loader.load('audi.glb', (gltf)=>{
+    const car = gltf.scene;
+    // Auto-Fit: zentrieren, skalieren, auf den Boden setzen
+    let box = new THREE.Box3().setFromObject(car);
+    const size = box.getSize(new THREE.Vector3());
+    const scale = 4.7 / Math.max(size.x, size.z, 0.001);
+    car.scale.setScalar(scale);
+    box = new THREE.Box3().setFromObject(car);
+    const c = box.getCenter(new THREE.Vector3());
+    car.position.x -= c.x;
+    car.position.z -= c.z;
+    car.position.y -= box.min.y;
+    pivot.add(car);
     carReady = true;
-  }, undefined, (err)=>{ console.warn('Car konnte nicht geladen werden:', err); });
+  }, undefined, (err)=>{ console.warn('Audi konnte nicht geladen werden:', err); });
 }
 
 function resize(){
@@ -302,18 +293,15 @@ function resize(){
 }
 
 function render(){
-  const t = -performance.now()/1000;
-  for(let i=0;i<wheels.length;i++) wheels[i].rotation.x = t * Math.PI * 2;
-  if(grid) grid.position.z = (-t * 4) % 2;
-  // sanfter Kamera-Schwenk
-  const a = performance.now()/1000;
-  camera.position.x = 4.6 + Math.sin(a*0.18) * 0.7;
-  camera.position.y = 1.5 + Math.sin(a*0.25) * 0.12;
-  camera.lookAt(0, 0.7, 0);
+  const t = performance.now()/1000;
+  if(carReady) pivot.rotation.y += 0.0035;        // langsame Drehbuehne
+  if(grid) grid.position.z = (-t * 4) % 2;        // Boden bewegt sich
+  camera.position.x = 5.2 + Math.sin(t*0.15) * 0.5;
+  camera.position.y = 1.9 + Math.sin(t*0.22) * 0.12;
+  camera.lookAt(0, 0.75, 0);
   renderer.render(scene, camera);
 }
 
-// Header-Scroll-Effekt
 const hdr = document.getElementById('hdr');
 window.addEventListener('scroll', ()=>{ hdr.classList.toggle('scrolled', window.scrollY > 40); });
 
