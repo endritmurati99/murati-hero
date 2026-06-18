@@ -237,8 +237,6 @@ let paintMats = [];
 let activeColor = '#1c5fd0';
 let scrollP = 0;
 let dragging = false, lastX = 0, dragVel = 0;
-let explodeGroup = null;
-const explodeParts = [];
 
 function shadowTexture(){
   const c = document.createElement('canvas'); c.width = c.height = 256;
@@ -293,7 +291,7 @@ function loadCar(){
   draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
   const loader = new GLTFLoader();
   loader.setDRACOLoader(draco);
-  loader.load('aventador.glb', (gltf)=>{
+  loader.load('audi.glb', (gltf)=>{
     const car = gltf.scene;
     let box = new THREE.Box3().setFromObject(car);
     const size = box.getSize(new THREE.Vector3());
@@ -302,37 +300,23 @@ function loadCar(){
     box = new THREE.Box3().setFromObject(car);
     const c = box.getCenter(new THREE.Vector3());
     car.position.x -= c.x; car.position.z -= c.z; car.position.y -= box.min.y;
-    pivot.add(car);
 
-    // Teile-Container finden (Node mit den meisten Kindern)
-    let root = car;
-    car.traverse(o=>{ if(o.children && o.children.length > (root.children ? root.children.length : 0)) root = o; });
-
-    // Teile in eine flache Gruppe ueberfuehren (Welt-Transform bleibt erhalten)
-    explodeGroup = new THREE.Group();
-    pivot.add(explodeGroup);
-    root.children.slice().forEach(m=> explodeGroup.attach(m));
-
-    // Explode-Richtungen relativ zum Mittelpunkt
-    const whole = new THREE.Box3().setFromObject(explodeGroup);
-    const origin = whole.getCenter(new THREE.Vector3());
-    explodeGroup.children.forEach(m=>{
-      const b = new THREE.Box3().setFromObject(m);
-      if(!isFinite(b.min.x)) return;
-      const cc = b.getCenter(new THREE.Vector3());
-      explodeParts.push({ obj:m, origPos:m.position.clone(), dir:cc.sub(origin) });
-      const mm = Array.isArray(m.material) ? m.material : [m.material];
-      mm.forEach(x=>{ if(x && /body|paint|carpaint|lack/i.test(x.name||'')) paintMats.push(x); });
+    car.traverse(o=>{
+      if(o.isMesh && o.material){
+        const ms = Array.isArray(o.material) ? o.material : [o.material];
+        ms.forEach(m=>{ if(m && /paint/i.test(m.name||'')) paintMats.push(m); });
+      }
     });
     if(!paintMats.length){
-      let best=null, bv=-1;
-      explodeGroup.children.forEach(m=>{ const v=(m.geometry&&m.geometry.attributes.position)?m.geometry.attributes.position.count:0; if(v>bv){bv=v; best=m;} });
-      if(best){ const mm=Array.isArray(best.material)?best.material:[best.material]; mm.forEach(x=>paintMats.push(x)); }
+      let best=null, bestV=-1;
+      car.traverse(o=>{ if(o.isMesh){ const v=(o.geometry&&o.geometry.attributes.position)?o.geometry.attributes.position.count:0; if(v>bestV){bestV=v; best=o;} } });
+      if(best){ const ms=Array.isArray(best.material)?best.material:[best.material]; ms.forEach(m=>paintMats.push(m)); }
     }
 
+    pivot.add(car);
     carReady = true;
     applyColor(activeColor);
-  }, undefined, (err)=>{ console.warn('Modell konnte nicht geladen werden:', err); });
+  }, undefined, (err)=>{ console.warn('Audi konnte nicht geladen werden:', err); });
 }
 
 function applyColor(hex){
@@ -381,20 +365,13 @@ function resize(){
 function render(){
   if(heroEl.getBoundingClientRect().bottom < 0) return; // Hero nicht sichtbar -> GPU sparen
   const t = performance.now()/1000;
-  if(carReady && !dragging){ pivot.rotation.y += 0.0024 + dragVel; dragVel *= 0.92; }
+  if(carReady && !dragging){ pivot.rotation.y += 0.0026 + dragVel; dragVel *= 0.92; }
   if(grid) grid.position.z = (-t * 4) % 2;
-  // Scroll faechert die Teile auf (Explode) + hebt sie leicht an
-  if(explodeParts.length){
-    const f = scrollP * 0.85, lift = scrollP * 0.35;
-    for(const p of explodeParts){
-      p.obj.position.set(p.origPos.x + p.dir.x*f, p.origPos.y + p.dir.y*f + lift, p.origPos.z + p.dir.z*f);
-    }
-  }
-  const radius = 8.25 - scrollP * 1.4;     // Scroll = leichter Zoom
-  const height = 2.15 - scrollP * 0.25;
+  const radius = 8.25 - scrollP * 2.3;     // Scroll = Zoom
+  const height = 2.15 - scrollP * 0.5;
   const az = 0.68 + Math.sin(t*0.12) * 0.05;
   camera.position.set(Math.sin(az)*radius, height, Math.cos(az)*radius);
-  camera.lookAt(0, 1.5 - scrollP*0.35, 0);  // folgt den aufsteigenden Teilen
+  camera.lookAt(0, 1.5, 0);                 // hoeher schauen => Auto sitzt tiefer im Bild
   renderer.render(scene, camera);
 }
 
