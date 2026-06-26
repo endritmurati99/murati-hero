@@ -7,23 +7,17 @@
 <meta name="description" content="Markenunabhängige Wartung, Diagnose und Reparatur in Dortmund. Transparente Befunde, Festpreis vorab – dokumentiert, Bauteil für Bauteil. Kfz-Werkstatt Gafur Murati, Eisenstraße 52." />
 <meta property="og:title" content="MURATI KFZ — Freie Kfz-Werkstatt in Dortmund" />
 <meta property="og:description" content="Wir zerlegen jedes Problem, bis es gelöst ist. Markenunabhängige Werkstatt in Dortmund." />
-<meta property="og:type" content="website" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%231B5CFF'/%3E%3Cpath d='M14 46V20l18 17 18-17v26' fill='none' stroke='%23fff' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* light warm-paper base (Claude Design) */
   --paper:#f6f4ef; --paper-2:#fbfaf7; --white:#ffffff;
-  --ink:#181a1f; --ink-warm:#29261b; --text:#33373f; --muted:#6a7280; --muted-2:#8a909b;
-  --line:#e7e3da; --line-soft:#efece4;
-  /* brand blue (#1B5CFF) + amber secondary */
+  --ink:#181a1f; --text:#33373f; --muted:#6a7280; --muted-2:#8a909b;
+  --line:#e7e3da; --line-soft:#eeeae1;
   --blue:#1b5cff; --blue-deep:#1247d6; --blue-soft:#eaf0ff; --blue-tint:rgba(27,92,255,.10);
-  --amber:#e0801f; --amber-soft:#fbeede;
-  --green:#25d366;
-  /* dark footer/ink section */
-  --dk:#101319; --dk-2:#161a22; --dk-line:rgba(255,255,255,.10); --dk-mut:rgba(255,255,255,.62);
+  --amber:#e0801f; --green:#25d366;
   --radius:18px; --radius-sm:13px; --maxw:1200px; --ease:cubic-bezier(.22,.61,.36,1);
 }
 *{ box-sizing:border-box; margin:0; padding:0; }
@@ -33,33 +27,31 @@ a{ color:inherit; text-decoration:none; }
 img{ max-width:100%; display:block; }
 .wrap{ width:min(var(--maxw),92vw); margin:0 auto; }
 .mono{ font-family:'JetBrains Mono',ui-monospace,monospace; }
-h1,h2,h3{ font-family:'Archivo',sans-serif; letter-spacing:-.025em; line-height:1.04; color:var(--ink); }
+h1,h2,h3{ font-family:'Archivo',sans-serif; letter-spacing:-.025em; line-height:1.03; color:var(--ink); }
 ::selection{ background:var(--blue); color:#fff; }
 
-/* ---------- logo ---------- */
+/* logo */
 .brand{ display:flex; align-items:center; gap:11px; }
 .brand .tile{ width:40px; height:40px; border-radius:11px; background:var(--blue); display:grid; place-items:center; box-shadow:0 8px 20px -8px rgba(27,92,255,.6); flex:none; }
 .brand .tile svg{ width:24px; height:24px; }
 .brand .wm{ display:flex; flex-direction:column; line-height:1; }
-.brand .wm b{ font-family:'Archivo'; font-weight:900; font-size:19px; letter-spacing:.01em; color:var(--ink); }
+.brand .wm b{ font-weight:900; font-size:19px; letter-spacing:.01em; color:var(--ink); }
 .brand .wm small{ font-family:'JetBrains Mono'; font-weight:500; font-size:9.5px; letter-spacing:.26em; color:var(--blue); margin-top:4px; }
 
-/* ---------- buttons ---------- */
-.btn{ display:inline-flex; align-items:center; gap:9px; font-weight:600; font-size:15px; padding:13px 22px; border-radius:12px; cursor:pointer; border:1px solid transparent; transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s, color .18s, border-color .18s; white-space:nowrap; }
+/* buttons */
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:9px; font-weight:700; font-size:15px; padding:13px 22px; border-radius:12px; cursor:pointer; border:1px solid transparent; transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s, color .18s, border-color .18s; white-space:nowrap; }
 .btn:hover{ transform:translateY(-2px); }
 .btn svg{ width:18px; height:18px; flex:none; }
-.btn-primary{ background:var(--blue); color:#fff; box-shadow:0 12px 28px -10px rgba(27,92,255,.7); font-weight:700; }
+.btn-primary{ background:var(--blue); color:#fff; box-shadow:0 12px 28px -10px rgba(27,92,255,.7); }
 .btn-primary:hover{ background:var(--blue-deep); box-shadow:0 16px 34px -10px rgba(27,92,255,.7); }
-.btn-wa{ background:var(--green); color:#04270f; font-weight:700; }
+.btn-wa{ background:var(--green); color:#04270f; }
 .btn-wa:hover{ background:#34e078; }
 .btn-ghost{ background:var(--white); color:var(--ink); border-color:var(--line); }
 .btn-ghost:hover{ border-color:var(--blue); color:var(--blue); }
-.btn-dark{ background:var(--ink); color:#fff; }
-.btn-dark:hover{ background:#000; }
 
-/* ---------- header ---------- */
+/* header */
 header{ position:fixed; inset:0 0 auto 0; z-index:60; padding:16px 0; transition:background .3s var(--ease), padding .3s var(--ease), box-shadow .3s, border-color .3s; border-bottom:1px solid transparent; }
-header.scrolled{ background:rgba(246,244,239,.85); backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); border-bottom-color:var(--line); padding:10px 0; }
+header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); border-bottom-color:var(--line); padding:10px 0; }
 .nav{ display:flex; align-items:center; justify-content:space-between; gap:20px; }
 .nav-links{ display:flex; align-items:center; gap:30px; }
 .nav-links a{ color:var(--text); font-weight:500; font-size:15px; position:relative; transition:color .2s; }
@@ -68,8 +60,7 @@ header.scrolled{ background:rgba(246,244,239,.85); backdrop-filter:blur(14px) sa
 .nav-actions{ display:flex; align-items:center; gap:10px; }
 .burger{ display:none; background:var(--white); border:1px solid var(--line); border-radius:10px; width:44px; height:44px; cursor:pointer; }
 .burger span{ display:block; width:18px; height:2px; background:var(--ink); margin:3px auto; border-radius:2px; }
-@media(max-width:1000px){ .nav-links{ display:none; } .nav-actions .btn-ghost, .nav-actions .btn-wa{ display:none; } .burger{ display:block; } }
-
+@media(max-width:1000px){ .nav-links{ display:none; } .nav-actions .btn-ghost,.nav-actions .btn-wa{ display:none; } .burger{ display:block; } }
 .mobile-menu{ position:fixed; inset:0; z-index:70; background:var(--paper); display:flex; flex-direction:column; padding:24px; gap:6px; transform:translateY(-100%); transition:transform .4s var(--ease); }
 .mobile-menu.open{ transform:translateY(0); }
 .mobile-menu .top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; }
@@ -77,42 +68,44 @@ header.scrolled{ background:rgba(246,244,239,.85); backdrop-filter:blur(14px) sa
 .mobile-menu .m-cta{ margin-top:auto; display:grid; gap:10px; }
 .x-close{ background:var(--white); border:1px solid var(--line); border-radius:10px; width:44px; height:44px; color:var(--ink); font-size:22px; cursor:pointer; }
 
-/* ---------- hero ---------- */
-.hero{ position:relative; padding:140px 0 60px; overflow:hidden;
-  background:
-    radial-gradient(60% 60% at 88% 18%, var(--blue-tint) 0%, rgba(27,92,255,0) 60%),
-    linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%); }
-.hero-grid{ display:grid; grid-template-columns:1.04fr .96fr; gap:30px; align-items:center; min-height:min(74vh,640px); }
-@media(max-width:920px){ .hero-grid{ grid-template-columns:1fr; gap:8px; } }
+/* hero (no car) — Stitch synergy: bold headline + stats + technical texture */
+.hero{ position:relative; padding:150px 0 70px; overflow:hidden;
+  background:radial-gradient(55% 55% at 82% 8%, var(--blue-tint) 0%, rgba(27,92,255,0) 60%), linear-gradient(180deg,#fff 0%, var(--paper) 100%); }
+.hero::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.6;
+  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size:46px 46px; -webkit-mask-image:radial-gradient(circle at 72% 18%, #000, transparent 72%); mask-image:radial-gradient(circle at 72% 18%, #000, transparent 72%); }
+.hero-grid{ position:relative; display:grid; grid-template-columns:1.25fr .75fr; gap:44px; align-items:center; }
+@media(max-width:940px){ .hero-grid{ grid-template-columns:1fr; gap:30px; } }
 .eyebrow-line{ display:inline-flex; align-items:center; gap:11px; font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.1em; color:var(--blue); text-transform:uppercase; }
 .eyebrow-line .pulse{ width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 0 rgba(27,92,255,.4); animation:pulse 2.4s infinite; }
 @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(27,92,255,.4);} 70%{box-shadow:0 0 0 10px rgba(27,92,255,0);} 100%{box-shadow:0 0 0 0 rgba(27,92,255,0);} }
-.hero h1{ margin-top:20px; font-weight:900; font-size:clamp(40px,6vw,80px); max-width:13ch; }
+.hero h1{ margin-top:20px; font-weight:900; font-size:clamp(42px,6.2vw,82px); max-width:13ch; }
 .hero h1 .accent{ color:var(--blue); }
-.hero .lead{ margin-top:22px; color:var(--muted); font-size:clamp(16px,1.5vw,20px); line-height:1.6; max-width:44ch; }
+.hero .lead{ margin-top:22px; color:var(--muted); font-size:clamp(16px,1.5vw,20px); line-height:1.6; max-width:46ch; }
 .hero-cta{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
-.config{ margin-top:28px; display:flex; align-items:center; gap:14px; width:max-content; max-width:100%; flex-wrap:wrap; }
-.config-label{ font-family:'JetBrains Mono'; color:var(--muted-2); font-size:11px; letter-spacing:.16em; text-transform:uppercase; }
-.swatches{ display:flex; gap:9px; }
-.sw{ width:30px; height:30px; border-radius:50%; border:2px solid var(--line); background:var(--c); cursor:pointer; padding:0; transition:transform .15s, box-shadow .15s; }
-.sw:hover{ transform:scale(1.12); } .sw.active{ box-shadow:0 0 0 3px var(--blue); border-color:#fff; }
-/* 3D stage */
-.car-stage{ position:relative; width:100%; aspect-ratio:1/.82; min-height:300px; }
-#car{ position:absolute; inset:0; width:100%; height:100%; display:block; }
-.car-stage .floor{ position:absolute; left:6%; right:6%; bottom:8%; height:1px; background:linear-gradient(90deg,transparent,var(--line),transparent); }
-.car-stage .tagchip{ position:absolute; left:0; bottom:2%; font-family:'JetBrains Mono'; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-2); display:flex; align-items:center; gap:8px; }
-.car-stage .tagchip i{ width:24px; height:1px; background:var(--blue); display:inline-block; }
-@media(max-width:920px){ .car-stage{ aspect-ratio:1/.7; min-height:240px; order:-1; } .hero{ padding-top:120px; } }
+/* hero contact/trust card (replaces the car) */
+.hero-card{ background:var(--white); border:1px solid var(--line); border-radius:20px; padding:26px; box-shadow:0 34px 70px -44px rgba(24,26,31,.4); }
+.hero-card .rate{ display:flex; align-items:center; gap:10px; }
+.hero-card .rate .stars{ color:#f5a623; letter-spacing:2px; font-size:16px; }
+.hero-card .rate b{ font-size:18px; color:var(--ink); }
+.hero-card .rate span{ font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); }
+.hero-card .status{ margin-top:14px; display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#1f8a5b; background:#e9f7ef; border:1px solid #cdeedd; padding:6px 11px; border-radius:999px; }
+.hero-card .status i{ width:8px; height:8px; border-radius:50%; background:#27c281; display:inline-block; }
+.hero-card .hcta{ margin-top:18px; display:grid; gap:10px; }
+.hero-card .hcta .btn{ width:100%; }
+.hero-card .htrust{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:12px 14px; }
+.hero-card .htrust div{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text); font-weight:600; }
+.hero-card .htrust svg{ width:17px; height:17px; stroke:var(--blue); flex:none; }
+/* stats band (Stitch synergy) */
+.stats{ position:relative; margin-top:54px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+@media(max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+.stat{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; }
+.stat b{ display:block; font-size:clamp(26px,3vw,34px); font-weight:900; color:var(--ink); letter-spacing:-.02em; }
+.stat b .s{ color:var(--blue); }
+.stat span{ margin-top:4px; display:block; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; }
 
-/* ---------- trust strip ---------- */
-.trust{ background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--text); }
-.trust .row{ display:flex; flex-wrap:wrap; gap:14px 34px; justify-content:center; padding:18px 0; }
-.trust .item{ display:flex; align-items:center; gap:9px; font-size:14.5px; font-weight:600; }
-.trust .item svg{ width:19px; height:19px; stroke:var(--blue); flex:none; }
-.trust .item b{ color:var(--ink); font-weight:800; }
-
-/* ---------- sections ---------- */
-section.block{ padding:clamp(70px,9vw,120px) 0; position:relative; }
+/* sections */
+section.block{ padding:clamp(70px,9vw,118px) 0; position:relative; }
 .sec-white{ background:var(--white); }
 .eyebrow{ font-family:'JetBrains Mono'; color:var(--blue); font-weight:600; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; }
 h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
@@ -127,13 +120,15 @@ h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
 .svc::before{ content:""; position:absolute; left:0; top:0; width:100%; height:3px; background:var(--blue); transform:scaleX(0); transform-origin:left; transition:transform .3s var(--ease); }
 .svc:hover{ transform:translateY(-6px); box-shadow:0 24px 50px -24px rgba(24,26,31,.28); border-color:#d9e2f5; }
 .svc:hover::before{ transform:scaleX(1); }
+.svc-top{ display:flex; align-items:center; justify-content:space-between; }
 .svc .num{ font-family:'JetBrains Mono'; font-size:12px; color:var(--blue); letter-spacing:.1em; }
 .svc .ico{ width:52px; height:52px; border-radius:14px; background:var(--blue-soft); display:grid; place-items:center; margin:14px 0 16px; }
 .svc .ico svg{ width:26px; height:26px; stroke:var(--blue); fill:none; stroke-width:1.8; }
 .svc h3{ font-size:20px; font-weight:800; }
 .svc p{ margin-top:10px; color:var(--muted); font-size:15px; line-height:1.58; }
+.svc .more{ margin-top:16px; display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono'; font-size:12px; color:var(--blue); font-weight:600; }
 
-/* why / usp */
+/* usp */
 .usp-grid{ margin-top:50px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 @media(max-width:900px){ .usp-grid{ grid-template-columns:repeat(2,1fr); } }
 @media(max-width:520px){ .usp-grid{ grid-template-columns:1fr; } }
@@ -143,7 +138,7 @@ h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
 .usp h3{ margin-top:12px; font-size:19px; font-weight:800; }
 .usp p{ margin-top:10px; color:var(--muted); font-size:14.5px; line-height:1.56; }
 
-/* werkstatt / about */
+/* about */
 .about{ display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; }
 @media(max-width:860px){ .about{ grid-template-columns:1fr; } }
 .about .owner{ background:var(--paper-2); border:1px solid var(--line); border-radius:var(--radius); padding:30px; }
@@ -164,11 +159,11 @@ h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
 .rev-note{ margin-top:24px; font-family:'JetBrains Mono'; font-size:12.5px; color:var(--muted); }
 .rev-note a{ color:var(--blue); border-bottom:1px solid var(--blue-tint); }
 .gbadge{ display:inline-flex; align-items:center; gap:10px; background:var(--white); border:1px solid var(--line); border-radius:14px; padding:11px 18px; }
-.gbadge .g{ font-family:'Archivo'; font-weight:800; font-size:18px; letter-spacing:-.02em; }
+.gbadge .g{ font-weight:800; font-size:18px; letter-spacing:-.02em; }
 .gbadge .g b:nth-child(1){color:#4285F4}.gbadge .g b:nth-child(2){color:#EA4335}.gbadge .g b:nth-child(3){color:#FBBC05}.gbadge .g b:nth-child(4){color:#4285F4}.gbadge .g b:nth-child(5){color:#34A853}.gbadge .g b:nth-child(6){color:#EA4335}
 .gbadge .rt{ font-weight:800; } .gbadge .stars{ color:#f5a623; letter-spacing:2px; }
 
-/* contact / booking — light & airy */
+/* contact / booking — light */
 .contact-grid{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:24px; overflow:hidden; background:var(--white); box-shadow:0 30px 60px -42px rgba(24,26,31,.3); }
 @media(max-width:880px){ .contact-grid{ grid-template-columns:1fr; } }
 .contact-info{ padding:clamp(30px,4vw,46px); background:linear-gradient(160deg,var(--blue-soft),var(--paper-2)); display:flex; flex-direction:column; }
@@ -194,7 +189,7 @@ h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
 @media(max-width:520px){ .two-col{ grid-template-columns:1fr; } }
 .form-note{ margin-top:14px; font-size:12px; color:var(--muted); line-height:1.5; }
 
-/* footer — light */
+/* footer */
 footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; border-top:1px solid var(--line); }
 .foot-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; }
 @media(max-width:760px){ .foot-top{ grid-template-columns:1fr; gap:26px; } }
@@ -205,7 +200,7 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
 .foot-bottom{ margin-top:42px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
 .foot-bottom a:hover{ color:var(--ink); }
 
-/* floating whatsapp */
+/* fab */
 .fab{ position:fixed; right:20px; bottom:20px; z-index:55; width:58px; height:58px; border-radius:50%; background:var(--green); display:grid; place-items:center; box-shadow:0 12px 30px -6px rgba(37,211,102,.5); transition:transform .2s var(--ease); }
 .fab:hover{ transform:scale(1.08); } .fab svg{ width:30px; height:30px; }
 @media(max-width:520px){ .fab{ width:54px; height:54px; right:16px; bottom:16px; } }
@@ -256,46 +251,43 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
   </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO (no car) -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow-line"><span class="pulse"></span> Freie Kfz-Werkstatt · Eisenstraße 52</span>
-      <h1>Wir zerlegen jedes Problem, <span class="accent">bis es gelöst ist.</span></h1>
-      <p class="lead">Markenunabhängige Wartung, Diagnose und Reparatur in Dortmund. Transparente Befunde, Festpreis vorab – dokumentiert, Bauteil für Bauteil.</p>
-      <div class="hero-cta">
-        <a href="#kontakt" class="btn btn-primary">Termin anfragen</a>
-        <a class="btn btn-wa" data-wa>WhatsApp</a>
-        <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
-      </div>
-      <div class="config">
-        <span class="config-label">Lackfarbe</span>
-        <div class="swatches" id="swatches">
-          <button class="sw active" data-c="#1b5cff" style="--c:#1b5cff" title="Blau" aria-label="Blau"></button>
-          <button class="sw" data-c="#c7ccd2" style="--c:#c7ccd2" title="Silber" aria-label="Silber"></button>
-          <button class="sw" data-c="#0e1116" style="--c:#0e1116" title="Schwarz" aria-label="Schwarz"></button>
-          <button class="sw" data-c="#b3121f" style="--c:#b3121f" title="Rot" aria-label="Rot"></button>
-          <button class="sw" data-c="#eef1f5" style="--c:#eef1f5" title="Weiß" aria-label="Weiß"></button>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow-line"><span class="pulse"></span> Meisterwerkstatt · Markenunabhängig · Dortmund</span>
+        <h1>Wir zerlegen jedes Problem, <span class="accent">bis es gelöst ist.</span></h1>
+        <p class="lead">Markenunabhängige Wartung, Diagnose und Reparatur in Dortmund. Transparente Befunde, Festpreis vorab – dokumentiert, Bauteil für Bauteil.</p>
+        <div class="hero-cta">
+          <a href="#kontakt" class="btn btn-primary">Termin vereinbaren</a>
+          <a class="btn btn-wa" data-wa>WhatsApp</a>
+          <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
         </div>
       </div>
+      <aside class="hero-card reveal">
+        <div class="rate"><span class="stars">★★★★★</span><b>4,9</b><span>Google-Bewertungen</span></div>
+        <div class="status"><i></i> Heute geöffnet · Mo–Fr 08–18 Uhr</div>
+        <div class="hcta">
+          <a class="btn btn-wa" data-wa>WhatsApp schreiben</a>
+          <a class="btn btn-ghost" data-tel>Anrufen: <span data-tel-text>0231 / 000 00 00</span></a>
+        </div>
+        <div class="htrust">
+          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Markenunabhängig</div>
+          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Festpreis vorab</div>
+          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Hol- & Bringservice</div>
+          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Garantie</div>
+        </div>
+      </aside>
     </div>
-    <div class="car-stage">
-      <canvas id="car"></canvas>
-      <div class="floor"></div>
-      <div class="tagchip"><i></i> Markenunabhängig · Dortmund</div>
+    <div class="stats stagger">
+      <div class="stat"><b>4,9<span class="s">★</span></b><span>Google-Bewertung</span></div>
+      <div class="stat"><b>Alle<span class="s">.</span></b><span>Fabrikate & Marken</span></div>
+      <div class="stat"><b>Fix<span class="s">.</span></b><span>Festpreis vorab</span></div>
+      <div class="stat"><b>Mo–Sa<span class="s">.</span></b><span>Für Sie da</span></div>
     </div>
   </div>
 </section>
-
-<!-- TRUST -->
-<div class="trust">
-  <div class="wrap row reveal">
-    <div class="item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><b>Markenunabhängig</b></div>
-    <div class="item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M5 6h11a3 3 0 010 6H5m0 6h11"/></svg><b>Festpreis</b> vorab</div>
-    <div class="item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 13l2-5h11l3 5v5h-3a2 2 0 01-4 0H8a2 2 0 01-4 0H3z"/></svg><b>Hol- & Bringservice</b></div>
-    <div class="item"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><b>Garantie</b> auf jede Reparatur</div>
-  </div>
-</div>
 
 <!-- SERVICES -->
 <section class="block sec-white" id="leistungen">
@@ -308,12 +300,12 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
       <a href="#kontakt" class="btn btn-ghost reveal">Kostenvoranschlag anfragen</a>
     </div>
     <div class="grid-svc stagger">
-      <div class="svc"><div class="num">01</div><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2 5 4-14 2 9h6"/></svg></div><h3>Inspektion & Wartung</h3><p>Herstellervorgaben ohne Garantieverlust. Ölwechsel, Filter, Flüssigkeiten – nach Plan, dokumentiert.</p></div>
-      <div class="svc"><div class="num">02</div><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h3>Motor & Diagnose</h3><p>Auslesen, befunden, beheben. Steuerkette, Zahnriemen, Motorelektronik – mit klarem Kostenvoranschlag vorab.</p></div>
-      <div class="svc"><div class="num">03</div><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Bremsen & Fahrwerk</h3><p>Beläge, Scheiben, Stoßdämpfer, Achsvermessung. Sicherheit, die geprüft und nachweisbar ist.</p></div>
-      <div class="svc"><div class="num">04</div><div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z"/></svg></div><h3>Elektrik & Sensorik</h3><p>Fehlerspeicher, Steuergeräte, Beleuchtung, Batterie- und Sensordiagnose mit moderner Messtechnik.</p></div>
-      <div class="svc"><div class="num">05</div><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 14a4 4 0 014-4h9a3 3 0 100-6M2 9h12a3 3 0 110 6M6 19h10a3 3 0 100-6"/></svg></div><h3>Klimaservice</h3><p>Befüllen, desinfizieren, Dichtheitsprüfung. Für R134a und R1234yf – damit es wieder kühlt.</p></div>
-      <div class="svc"><div class="num">06</div><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>HU / AU-Vorbereitung</h3><p>Prüfung im Haus, Abnahme über Partnerorganisation. Sie bekommen Ihr Fahrzeug startklar zurück.</p></div>
+      <div class="svc"><div class="svc-top"><span class="num">01</span></div><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h4l2 5 4-14 2 9h6"/></svg></div><h3>Inspektion & Wartung</h3><p>Herstellervorgaben ohne Garantieverlust. Ölwechsel, Filter, Flüssigkeiten – nach Plan, dokumentiert.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
+      <div class="svc"><div class="svc-top"><span class="num">02</span></div><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div><h3>Motor & Diagnose</h3><p>Auslesen, befunden, beheben. Steuerkette, Zahnriemen, Motorelektronik – mit klarem Kostenvoranschlag vorab.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
+      <div class="svc"><div class="svc-top"><span class="num">03</span></div><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Bremsen & Fahrwerk</h3><p>Beläge, Scheiben, Stoßdämpfer, Achsvermessung. Sicherheit, die geprüft und nachweisbar ist.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
+      <div class="svc"><div class="svc-top"><span class="num">04</span></div><div class="ico"><svg viewBox="0 0 24 24"><path d="M13 2L4.5 13H11l-1 9 8.5-11H12l1-9z"/></svg></div><h3>Elektrik & Sensorik</h3><p>Fehlerspeicher, Steuergeräte, Beleuchtung, Batterie- und Sensordiagnose mit moderner Messtechnik.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
+      <div class="svc"><div class="svc-top"><span class="num">05</span></div><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 14a4 4 0 014-4h9a3 3 0 100-6M2 9h12a3 3 0 110 6M6 19h10a3 3 0 100-6"/></svg></div><h3>Klimaservice</h3><p>Befüllen, desinfizieren, Dichtheitsprüfung. Für R134a und R1234yf – damit es wieder kühlt.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
+      <div class="svc"><div class="svc-top"><span class="num">06</span></div><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h3>HU / AU-Vorbereitung</h3><p>Prüfung im Haus, Abnahme über Partnerorganisation. Sie bekommen Ihr Fahrzeug startklar zurück.</p><a href="#kontakt" class="more">Festpreis anfragen →</a></div>
     </div>
   </div>
 </section>
@@ -402,8 +394,8 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
           </div>
         </div>
         <div class="field"><label for="f-msg">Worum geht's?</label><textarea id="f-msg" name="msg" placeholder="Kurz beschreiben – z. B. Geräusch, Warnleuchte, Service fällig …"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px">Anfrage per WhatsApp senden</button>
-        <button type="button" class="btn btn-ghost" data-mailto style="width:100%; justify-content:center; margin-top:10px">Lieber per E-Mail</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:20px">Anfrage per WhatsApp senden</button>
+        <button type="button" class="btn btn-ghost" data-mailto style="width:100%; margin-top:10px">Lieber per E-Mail</button>
         <p class="form-note">Mit dem Absenden öffnet sich WhatsApp mit Ihrer vorausgefüllten Anfrage. Keine Daten werden auf dieser Seite gespeichert.</p>
       </form>
     </div>
@@ -432,9 +424,9 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
 
 <script>
 const MURATI = {
-  phoneDisplay: "0231 / 000 00 00",   // TODO echte Nummer
-  phoneTel:     "+4923100000000",      // TODO
-  whatsapp:     "491700000000",        // TODO internationale Form ohne + / ohne führende 0
+  phoneDisplay: "0231 / 000 00 00",  // TODO echte Nummer
+  phoneTel:     "+4923100000000",     // TODO
+  whatsapp:     "491700000000",       // TODO international ohne + / ohne führende 0
   email:        "info@murati-kfz.de",
   reviewsUrl:   "https://www.google.com/maps/search/?api=1&query=Murati+Kfz+Eisenstra%C3%9Fe+52+Dortmund"
 };
@@ -461,70 +453,10 @@ const MURATI = {
   mm?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mm.classList.remove('open')));
   const els=document.querySelectorAll('.reveal,.stagger');
   if(!('IntersectionObserver'in window)){ els.forEach(e=>e.classList.add('in')); }
-  else{ const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+  else{ const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     els.forEach(e=>io.observe(e));
     setTimeout(()=>els.forEach(e=>{ const r=e.getBoundingClientRect(); if(r.top<innerHeight&&!e.classList.contains('in'))e.classList.add('in'); }),1200); }
 })();
-</script>
-
-<script type="importmap">
-{ "imports": {
-  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-}}
-</script>
-<script type="module">
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-const canvas=document.getElementById('car'); const stage=document.querySelector('.car-stage');
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let renderer,scene,camera; const pivot=new THREE.Group();
-let carReady=false,paintMats=[],activeColor='#1b5cff',dragging=false,lastX=0,dragVel=0;
-const fitCenter=new THREE.Vector3(0,.7,0); let fitRadius=3,fitDist=9;
-function shadowTexture(){ const c=document.createElement('canvas'); c.width=c.height=256; const x=c.getContext('2d');
-  const g=x.createRadialGradient(128,128,8,128,128,128); g.addColorStop(0,'rgba(20,28,45,.30)'); g.addColorStop(.55,'rgba(20,28,45,.12)'); g.addColorStop(1,'rgba(0,0,0,0)');
-  x.fillStyle=g; x.fillRect(0,0,256,256); return new THREE.CanvasTexture(c); }
-function init(){
-  renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=1.1; renderer.outputColorSpace=THREE.SRGBColorSpace;
-  scene=new THREE.Scene();
-  const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
-  camera=new THREE.PerspectiveCamera(38,1,.1,200);
-  scene.add(new THREE.HemisphereLight(0xffffff,0xb8c4d8,.85));
-  const d1=new THREE.DirectionalLight(0xffffff,2.4); d1.position.set(6,9,4); scene.add(d1);
-  const d2=new THREE.DirectionalLight(0xbcd2ff,1.1); d2.position.set(-7,4,-5); scene.add(d2);
-  const shadow=new THREE.Mesh(new THREE.PlaneGeometry(6.4,3.2), new THREE.MeshBasicMaterial({map:shadowTexture(),transparent:true,depthWrite:false,opacity:.95,toneMapped:false}));
-  shadow.rotation.x=-Math.PI/2; shadow.position.y=.01; shadow.renderOrder=1; scene.add(shadow);
-  scene.add(pivot); loadCar(); setupInteraction(); addEventListener('resize',resize); resize(); renderer.setAnimationLoop(render);
-}
-function frameCamera(){ const vF=THREE.MathUtils.degToRad(camera.fov); const hF=2*Math.atan(Math.tan(vF/2)*camera.aspect);
-  const dV=fitRadius/Math.sin(vF/2),dH=fitRadius/Math.sin(hF/2); const margin=camera.aspect<1?1.22:0.98; fitDist=Math.max(dV,dH)*margin; }
-function loadCar(){ const draco=new DRACOLoader(); draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-  const loader=new GLTFLoader(); loader.setDRACOLoader(draco);
-  loader.load('audi.glb',(g)=>{ const car=g.scene; let box=new THREE.Box3().setFromObject(car); const s=box.getSize(new THREE.Vector3());
-    car.scale.setScalar(4.6/Math.max(s.x,s.z,.001)); box=new THREE.Box3().setFromObject(car); const c=box.getCenter(new THREE.Vector3());
-    car.position.x-=c.x; car.position.z-=c.z; car.position.y-=box.min.y; pivot.add(car);
-    const sph=new THREE.Box3().setFromObject(car).getBoundingSphere(new THREE.Sphere()); fitCenter.copy(sph.center); fitRadius=sph.radius; frameCamera();
-    car.traverse(o=>{ if(o.isMesh&&o.material){ const ms=Array.isArray(o.material)?o.material:[o.material]; ms.forEach(m=>{ if(m&&/paint/i.test(m.name||''))paintMats.push(m); }); } });
-    if(!paintMats.length){ let best=null,bv=-1; car.traverse(o=>{ if(o.isMesh){ const v=o.geometry?.attributes.position?.count||0; if(v>bv){bv=v;best=o;} } }); if(best){ const ms=Array.isArray(best.material)?best.material:[best.material]; ms.forEach(m=>paintMats.push(m)); } }
-    carReady=true; applyColor(activeColor);
-  },undefined,e=>console.warn('Audi load failed',e)); }
-function applyColor(hex){ activeColor=hex; paintMats.forEach(m=>{ if(m.color)m.color.set(hex); if('metalness'in m)m.metalness=Math.max(m.metalness,.85); if('clearcoat'in m)m.clearcoat=1; m.needsUpdate=true; }); }
-function setupInteraction(){ document.querySelectorAll('#swatches .sw').forEach(b=>{ b.addEventListener('click',()=>{ document.querySelectorAll('#swatches .sw').forEach(x=>x.classList.remove('active')); b.classList.add('active'); applyColor(b.dataset.c); }); });
-  if(matchMedia('(pointer: fine)').matches){ stage.style.cursor='grab';
-    stage.addEventListener('pointerdown',e=>{ if(e.pointerType!=='mouse')return; dragging=true; lastX=e.clientX; stage.style.cursor='grabbing'; });
-    addEventListener('pointerup',()=>{ dragging=false; stage.style.cursor='grab'; });
-    addEventListener('pointermove',e=>{ if(!dragging)return; const dx=e.clientX-lastX; lastX=e.clientX; dragVel=dx*.006; pivot.rotation.y+=dragVel; }); } }
-function resize(){ const w=canvas.clientWidth||stage.clientWidth, h=canvas.clientHeight||stage.clientHeight; if(!w||!h)return; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); frameCamera(); }
-function render(){ const r=stage.getBoundingClientRect(); if(r.bottom<-40||r.top>innerHeight+40)return; const t=performance.now()/1000;
-  if(carReady&&!dragging&&!reduce){ pivot.rotation.y+=.0026+dragVel; dragVel*=.92; }
-  const az=.62+(reduce?0:Math.sin(t*.12)*.05); const elev=THREE.MathUtils.degToRad(camera.aspect<1?12:16); const hor=Math.cos(elev)*fitDist;
-  camera.position.set(fitCenter.x+Math.sin(az)*hor, fitCenter.y+Math.sin(elev)*fitDist, fitCenter.z+Math.cos(az)*hor); camera.lookAt(fitCenter);
-  renderer.render(scene,camera); }
-try{ init(); }catch(e){ console.error('3D init failed',e); }
 </script>
 </body>
 </html>
