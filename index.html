@@ -105,11 +105,11 @@ header.scrolled{ background:rgba(246,244,239,.85); backdrop-filter:blur(14px) sa
 @media(max-width:920px){ .car-stage{ aspect-ratio:1/.7; min-height:240px; order:-1; } .hero{ padding-top:120px; } }
 
 /* ---------- trust strip ---------- */
-.trust{ background:var(--blue); color:#fff; }
+.trust{ background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); color:var(--text); }
 .trust .row{ display:flex; flex-wrap:wrap; gap:14px 34px; justify-content:center; padding:18px 0; }
 .trust .item{ display:flex; align-items:center; gap:9px; font-size:14.5px; font-weight:600; }
-.trust .item svg{ width:19px; height:19px; stroke:#fff; flex:none; opacity:.9; }
-.trust .item b{ font-weight:800; }
+.trust .item svg{ width:19px; height:19px; stroke:var(--blue); flex:none; }
+.trust .item b{ color:var(--ink); font-weight:800; }
 
 /* ---------- sections ---------- */
 section.block{ padding:clamp(70px,9vw,120px) 0; position:relative; }
@@ -168,45 +168,42 @@ h2{ margin-top:14px; font-size:clamp(30px,4vw,48px); font-weight:800; }
 .gbadge .g b:nth-child(1){color:#4285F4}.gbadge .g b:nth-child(2){color:#EA4335}.gbadge .g b:nth-child(3){color:#FBBC05}.gbadge .g b:nth-child(4){color:#4285F4}.gbadge .g b:nth-child(5){color:#34A853}.gbadge .g b:nth-child(6){color:#EA4335}
 .gbadge .rt{ font-weight:800; } .gbadge .stars{ color:#f5a623; letter-spacing:2px; }
 
-/* contact / booking — dark band for contrast */
-.contact-grid{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--dk-line); border-radius:24px; overflow:hidden; background:var(--dk-2); }
+/* contact / booking — light & airy */
+.contact-grid{ display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); border-radius:24px; overflow:hidden; background:var(--white); box-shadow:0 30px 60px -42px rgba(24,26,31,.3); }
 @media(max-width:880px){ .contact-grid{ grid-template-columns:1fr; } }
-.contact-info{ padding:clamp(30px,4vw,46px); background:linear-gradient(160deg,#1a2030,var(--dk-2)); display:flex; flex-direction:column; color:#fff; }
-.contact-info h3{ font-size:clamp(22px,3vw,28px); font-weight:800; color:#fff; }
+.contact-info{ padding:clamp(30px,4vw,46px); background:linear-gradient(160deg,var(--blue-soft),var(--paper-2)); display:flex; flex-direction:column; }
+.contact-info h3{ font-size:clamp(22px,3vw,28px); font-weight:800; color:var(--ink); }
 .info-list{ margin-top:26px; display:grid; gap:16px; }
 .info-list .row{ display:flex; gap:13px; align-items:flex-start; }
-.info-list .row svg{ width:21px; height:21px; stroke:#6ea0ff; flex:none; margin-top:3px; fill:none; stroke-width:1.8; }
-.info-list .row b{ display:block; font-size:15px; color:#fff; font-weight:700; }
-.info-list .row span{ color:var(--dk-mut); font-size:14.5px; line-height:1.5; }
-.info-list .row a:hover{ color:#6ea0ff; }
+.info-list .row svg{ width:21px; height:21px; stroke:var(--blue); flex:none; margin-top:3px; fill:none; stroke-width:1.8; }
+.info-list .row b{ display:block; font-size:15px; color:var(--ink); font-weight:700; }
+.info-list .row span{ color:var(--muted); font-size:14.5px; line-height:1.5; }
+.info-list .row a:hover{ color:var(--blue); }
 .contact-quick{ margin-top:24px; display:flex; gap:10px; flex-wrap:wrap; }
-.contact-quick .btn-ghost{ background:transparent; color:#fff; border-color:var(--dk-line); }
-.contact-quick .btn-ghost:hover{ border-color:#6ea0ff; color:#6ea0ff; }
 .map{ margin-top:auto; padding-top:24px; }
-.map iframe{ width:100%; height:160px; border:0; border-radius:14px; filter:grayscale(.2) contrast(1.02); }
-.contact-form{ padding:clamp(30px,4vw,46px); background:var(--dk); color:#fff; }
-.contact-form .fh{ font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6ea0ff; }
-.contact-form h3{ font-size:24px; font-weight:800; color:#fff; margin-top:10px; }
-.field{ margin-top:15px; } .field label{ display:block; font-size:13px; color:var(--dk-mut); margin-bottom:6px; font-weight:500; }
-.field input, .field select, .field textarea{ width:100%; background:#0c0f14; border:1px solid var(--dk-line); border-radius:11px; padding:13px 14px; color:#fff; font-family:'Archivo'; font-size:15px; transition:border-color .2s, box-shadow .2s; }
-.field input::placeholder, .field textarea::placeholder{ color:#5a626f; }
-.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(27,92,255,.3); }
+.map iframe{ width:100%; height:160px; border:1px solid var(--line); border-radius:14px; filter:grayscale(.15) contrast(1.02); }
+.contact-form{ padding:clamp(30px,4vw,46px); background:var(--white); }
+.contact-form .fh{ font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); }
+.contact-form h3{ font-size:24px; font-weight:800; color:var(--ink); margin-top:10px; }
+.field{ margin-top:15px; } .field label{ display:block; font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:500; }
+.field input, .field select, .field textarea{ width:100%; background:var(--paper-2); border:1px solid var(--line); border-radius:11px; padding:13px 14px; color:var(--ink); font-family:'Archivo'; font-size:15px; transition:border-color .2s, box-shadow .2s; }
+.field input::placeholder, .field textarea::placeholder{ color:var(--muted-2); }
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(27,92,255,.18); background:#fff; }
 .field textarea{ resize:vertical; min-height:88px; }
 .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:13px; }
 @media(max-width:520px){ .two-col{ grid-template-columns:1fr; } }
-.form-note{ margin-top:14px; font-size:12px; color:var(--dk-mut); line-height:1.5; }
+.form-note{ margin-top:14px; font-size:12px; color:var(--muted); line-height:1.5; }
 
-/* footer */
-footer{ background:var(--dk); color:var(--dk-mut); padding:56px 0 30px; }
+/* footer — light */
+footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; border-top:1px solid var(--line); }
 .foot-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; }
 @media(max-width:760px){ .foot-top{ grid-template-columns:1fr; gap:26px; } }
-footer .brand .wm b{ color:#fff; } footer .brand .wm small{ color:#6ea0ff; }
-.foot-top p{ margin-top:14px; color:var(--dk-mut); font-size:14.5px; line-height:1.6; max-width:36ch; }
-.foot-col h4{ font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--dk-mut); }
-.foot-col a{ display:block; margin-top:11px; color:rgba(255,255,255,.8); font-size:14.5px; }
-.foot-col a:hover{ color:#6ea0ff; }
-.foot-bottom{ margin-top:42px; padding-top:22px; border-top:1px solid var(--dk-line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--dk-mut); }
-.foot-bottom a:hover{ color:#fff; }
+.foot-top p{ margin-top:14px; color:var(--muted); font-size:14.5px; line-height:1.6; max-width:36ch; }
+.foot-col h4{ font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted-2); }
+.foot-col a{ display:block; margin-top:11px; color:var(--text); font-size:14.5px; }
+.foot-col a:hover{ color:var(--blue); }
+.foot-bottom{ margin-top:42px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+.foot-bottom a:hover{ color:var(--ink); }
 
 /* floating whatsapp */
 .fab{ position:fixed; right:20px; bottom:20px; z-index:55; width:58px; height:58px; border-radius:50%; background:var(--green); display:grid; place-items:center; box-shadow:0 12px 30px -6px rgba(37,211,102,.5); transition:transform .2s var(--ease); }
@@ -406,7 +403,7 @@ footer .brand .wm b{ color:#fff; } footer .brand .wm small{ color:#6ea0ff; }
         </div>
         <div class="field"><label for="f-msg">Worum geht's?</label><textarea id="f-msg" name="msg" placeholder="Kurz beschreiben – z. B. Geräusch, Warnleuchte, Service fällig …"></textarea></div>
         <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:20px">Anfrage per WhatsApp senden</button>
-        <button type="button" class="btn btn-ghost" data-mailto style="width:100%; justify-content:center; margin-top:10px; background:transparent; color:#fff; border-color:var(--dk-line)">Lieber per E-Mail</button>
+        <button type="button" class="btn btn-ghost" data-mailto style="width:100%; justify-content:center; margin-top:10px">Lieber per E-Mail</button>
         <p class="form-note">Mit dem Absenden öffnet sich WhatsApp mit Ihrer vorausgefüllten Anfrage. Keine Daten werden auf dieser Seite gespeichert.</p>
       </form>
     </div>
@@ -504,7 +501,7 @@ function init(){
   scene.add(pivot); loadCar(); setupInteraction(); addEventListener('resize',resize); resize(); renderer.setAnimationLoop(render);
 }
 function frameCamera(){ const vF=THREE.MathUtils.degToRad(camera.fov); const hF=2*Math.atan(Math.tan(vF/2)*camera.aspect);
-  const dV=fitRadius/Math.sin(vF/2),dH=fitRadius/Math.sin(hF/2); const margin=camera.aspect<1?1.42:1.12; fitDist=Math.max(dV,dH)*margin; }
+  const dV=fitRadius/Math.sin(vF/2),dH=fitRadius/Math.sin(hF/2); const margin=camera.aspect<1?1.22:0.98; fitDist=Math.max(dV,dH)*margin; }
 function loadCar(){ const draco=new DRACOLoader(); draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
   const loader=new GLTFLoader(); loader.setDRACOLoader(draco);
   loader.load('audi.glb',(g)=>{ const car=g.scene; let box=new THREE.Box3().setFromObject(car); const s=box.getSize(new THREE.Vector3());
