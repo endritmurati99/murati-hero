@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MURATI KFZ — Kfz-Meisterbetrieb</title>
+<meta name="description" content="Wartung, Reparatur und Service fuer alle Marken. Ehrlich kalkuliert, schnell erledigt, transparent erklaert." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blau:#2f7bff; --blau-tief:#1763d8;
+    --ink:#0b1020; --ink-2:#0a0e17;
+    --hell:#f5f7fb; --text:#0f1b2d; --muted:#5b6b82; --line:#e6ecf5; --radius:16px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; color:var(--text); background:#fff; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ width:min(1180px, 92vw); margin:0 auto; }
+
+  header{ position:fixed; top:0; left:0; right:0; z-index:50; transition:background .25s, box-shadow .25s, padding .25s; padding:16px 0; }
+  header.scrolled{ background:rgba(10,14,23,.85); backdrop-filter:blur(10px); box-shadow:0 1px 0 rgba(255,255,255,.06); padding:11px 0; }
+  .nav{ display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:11px; font-weight:800; font-size:19px; color:#fff; }
+  .brand .logo{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--blau),var(--blau-tief)); display:grid; place-items:center; color:#fff; font-weight:900; box-shadow:0 8px 20px rgba(47,123,255,.35); }
+  .nav-links{ display:flex; align-items:center; gap:28px; }
+  .nav-links a{ color:rgba(255,255,255,.82); font-weight:500; font-size:15px; }
+  .nav-links a:hover{ color:#fff; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; font-weight:700; font-size:15px; padding:12px 22px; border-radius:11px; cursor:pointer; border:0; transition:transform .15s, box-shadow .15s, background .15s; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--blau); color:#fff; box-shadow:0 10px 26px rgba(47,123,255,.4); }
+  .btn-primary:hover{ background:var(--blau-tief); }
+  .btn-ghost{ background:rgba(255,255,255,.08); color:#fff; border:1px solid rgba(255,255,255,.18); }
+  @media(max-width:820px){ .nav-links{ display:none; } }
+
+  /* HERO */
+  .hero{ position:relative; width:100%; height:100vh; height:100svh; min-height:560px; overflow:hidden;
+         background:radial-gradient(120% 90% at 65% 12%, #14203a 0%, var(--ink) 46%, var(--ink-2) 100%); }
+  #car{ position:absolute; inset:0; width:100%; height:100%; display:block; pointer-events:none; }
+  .hero::after{ content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(90deg, rgba(8,11,20,.82) 0%, rgba(8,11,20,.30) 40%, rgba(8,11,20,0) 62%),
+               linear-gradient(0deg, var(--ink-2) 1%, rgba(10,14,23,0) 32%); }
+  .hero-inner{ position:relative; z-index:3; height:100%; display:flex; flex-direction:column; justify-content:center; pointer-events:none; }
+  .hero-inner > *{ pointer-events:auto; }
+  .badge{ display:inline-flex; align-items:center; gap:9px; width:max-content; background:rgba(47,123,255,.12); border:1px solid rgba(47,123,255,.35); color:#bcd4ff; padding:8px 15px; border-radius:999px; font-weight:600; font-size:13px; }
+  .badge .dot{ width:8px; height:8px; border-radius:50%; background:var(--blau); box-shadow:0 0 0 4px rgba(47,123,255,.25); }
+  h1{ margin-top:20px; color:#fff; font-weight:900; letter-spacing:-.025em; font-size:clamp(38px,6.4vw,84px); line-height:.99; max-width:14ch; }
+  h1 .accent{ color:var(--blau); }
+  .lead{ margin-top:20px; color:rgba(255,255,255,.80); font-size:clamp(16px,1.5vw,20px); line-height:1.55; max-width:44ch; }
+  .hero-cta{ margin-top:30px; display:flex; gap:13px; flex-wrap:wrap; }
+  .config{ margin-top:26px; display:flex; align-items:center; gap:14px; width:max-content; }
+  .config-label{ color:rgba(255,255,255,.55); font-size:12px; letter-spacing:.16em; text-transform:uppercase; }
+  .swatches{ display:flex; gap:10px; }
+  .sw{ width:30px; height:30px; border-radius:50%; border:2px solid rgba(255,255,255,.35); background:var(--c); cursor:pointer; padding:0; transition:transform .15s, box-shadow .15s; }
+  .sw:hover{ transform:scale(1.12); }
+  .sw.active{ box-shadow:0 0 0 3px rgba(47,123,255,.95); border-color:#fff; }
+  .scroll-hint{ position:absolute; bottom:18px; left:50%; transform:translateX(-50%); z-index:3; color:rgba(255,255,255,.45); font-size:11px; letter-spacing:.2em; text-transform:uppercase; pointer-events:none; }
+
+  /* MOBILE / Hochkant: Text nach unten, Auto bekommt oben Platz, staerkerer Verlauf unten */
+  @media(max-width:820px){
+    .hero-inner{ justify-content:flex-end; padding-bottom:clamp(54px,12vh,110px); }
+    .hero::after{ background:linear-gradient(0deg, var(--ink-2) 14%, rgba(10,14,23,.2) 46%, rgba(10,14,23,0) 72%); }
+    h1{ font-size:clamp(34px,9vw,50px); max-width:18ch; }
+    .lead{ font-size:16px; max-width:38ch; }
+    .config{ margin-top:22px; }
+    .scroll-hint{ display:none; }
+  }
+
+  section.block{ padding:clamp(64px,9vw,120px) 0; }
+  .eyebrow{ color:var(--blau-tief); font-weight:700; font-size:13px; letter-spacing:.14em; text-transform:uppercase; }
+  h2{ margin-top:12px; font-size:clamp(30px,4vw,48px); font-weight:800; letter-spacing:-.02em; line-height:1.05; }
+  .section-sub{ margin-top:16px; color:var(--muted); font-size:18px; max-width:54ch; line-height:1.6; }
+  .grid{ margin-top:48px; display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  @media(max-width:900px){ .grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:600px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px; transition:transform .18s, box-shadow .18s, border-color .18s; }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,27,45,.09); border-color:#d4e0f3; }
+  .card .ico{ width:50px; height:50px; border-radius:13px; background:linear-gradient(135deg, rgba(47,123,255,.14), rgba(23,99,216,.1)); display:grid; place-items:center; margin-bottom:18px; }
+  .card .ico svg{ width:26px; height:26px; stroke:var(--blau-tief); }
+  .card h3{ font-size:20px; font-weight:700; }
+  .card p{ margin-top:10px; color:var(--muted); font-size:15.5px; line-height:1.55; }
+  .stats{ background:var(--ink-2); color:#fff; border-radius:24px; padding:clamp(34px,5vw,56px); display:grid; grid-template-columns:repeat(4,1fr); gap:22px; }
+  @media(max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); } }
+  .stat .num{ font-size:clamp(34px,4vw,52px); font-weight:900; background:linear-gradient(120deg,#fff,#a9c7ff); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .stat .lbl{ margin-top:6px; color:rgba(255,255,255,.62); font-size:14.5px; }
+  .reviews{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; }
+  @media(max-width:900px){ .reviews{ grid-template-columns:1fr; } }
+  .review{ background:var(--hell); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+  .review .stars{ color:#ffb020; letter-spacing:2px; font-size:15px; }
+  .review p{ margin-top:12px; font-size:16px; line-height:1.6; }
+  .review .who{ margin-top:16px; font-weight:700; font-size:14.5px; }
+  .contact{ background:radial-gradient(120% 130% at 80% 0%, #16243f 0%, var(--ink) 55%, var(--ink-2) 100%); color:#fff; border-radius:24px; padding:clamp(38px,6vw,72px); display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:center; }
+  @media(max-width:820px){ .contact{ grid-template-columns:1fr; } }
+  .contact h2{ color:#fff; }
+  .contact .sub{ margin-top:16px; color:rgba(255,255,255,.74); font-size:17px; line-height:1.6; max-width:42ch; }
+  .info{ display:grid; gap:16px; }
+  .info .row{ display:flex; gap:13px; align-items:flex-start; }
+  .info .row svg{ width:22px; height:22px; stroke:var(--blau); flex:none; margin-top:2px; }
+  .info .row b{ display:block; font-size:15px; }
+  .info .row span{ color:rgba(255,255,255,.66); font-size:14.5px; }
+  footer{ background:var(--ink-2); color:rgba(255,255,255,.6); padding:40px 0; }
+  .foot{ display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; font-size:14px; }
+  .foot .brand{ font-size:18px; }
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap nav">
+    <div class="brand"><span class="logo">M</span> MURATI&nbsp;KFZ</div>
+    <nav class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#bewertungen">Bewertungen</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a href="#kontakt" class="btn btn-primary">Termin anfragen</a>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="car"></canvas>
+  <div class="wrap hero-inner">
+    <span class="badge"><span class="dot"></span> Kfz-Meisterbetrieb</span>
+    <h1>Werkstatt, die dein <span class="accent">Auto</span> verdient.</h1>
+    <p class="lead">Wartung, Reparatur und Service für alle Marken. Ehrlich kalkuliert, schnell erledigt, transparent erklärt.</p>
+    <div class="hero-cta">
+      <a href="#kontakt" class="btn btn-primary">Termin anfragen</a>
+      <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+    </div>
+    <div class="config">
+      <span class="config-label">Lack</span>
+      <div class="swatches" id="swatches">
+        <button class="sw active" data-c="#1c5fd0" style="--c:#1c5fd0" title="Blau" aria-label="Blau"></button>
+        <button class="sw" data-c="#c7ccd2" style="--c:#c7ccd2" title="Silber" aria-label="Silber"></button>
+        <button class="sw" data-c="#0e1116" style="--c:#0e1116" title="Schwarz" aria-label="Schwarz"></button>
+        <button class="sw" data-c="#b3121f" style="--c:#b3121f" title="Rot" aria-label="Rot"></button>
+        <button class="sw" data-c="#eef1f5" style="--c:#eef1f5" title="Weiß" aria-label="Weiß"></button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">scrollen</div>
+</section>
+
+<section class="block" id="leistungen">
+  <div class="wrap">
+    <p class="eyebrow">Leistungen</p>
+    <h2>Alles für dein Fahrzeug,<br>unter einem Dach.</h2>
+    <p class="section-sub">Von der Inspektion bis zur Unfallinstandsetzung. Modernste Diagnose, Original- und Qualitätsteile, faire Festpreise.</p>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h4l2 5 4-14 2 9h6"/></svg></div><h3>Inspektion & Wartung</h3><p>Nach Herstellervorgaben, Stempel im Serviceheft, klare Festpreise ohne Überraschung.</p></div>
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M14 7l3 3-7 7-3-3z"/><path d="M5 19l-2 2"/><path d="M16 3l5 5"/></svg></div><h3>Reparaturen</h3><p>Von Bremsen über Fahrwerk bis Motor. Präzise Diagnose mit moderner Technik.</p></div>
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div><h3>HU & AU</h3><p>Hauptuntersuchung direkt im Haus, inklusive Vorab-Check, damit alles durchgeht.</p></div>
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div><h3>Reifen & Räder</h3><p>Wechsel, Auswuchten, Einlagerung und neue Reifen zu ehrlichen Preisen.</p></div>
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div><h3>Klimaservice</h3><p>Befüllen, Desinfektion und Lecksuche für klare Sicht und kühle Luft.</p></div>
+      <div class="card"><div class="ico"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M3 13l2-5h14l2 5v5h-3a2 2 0 01-4 0H10a2 2 0 01-4 0H3z"/></svg></div><h3>Unfallinstandsetzung</h3><p>Karosserie, Lack und die komplette Abwicklung mit deiner Versicherung.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ueber" style="padding-top:0;">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="num">15+</div><div class="lbl">Jahre Erfahrung</div></div>
+      <div class="stat"><div class="num">8.000+</div><div class="lbl">Fahrzeuge serviciert</div></div>
+      <div class="stat"><div class="num">4.9★</div><div class="lbl">Kundenbewertung</div></div>
+      <div class="stat"><div class="num">Alle</div><div class="lbl">Marken & Modelle</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="bewertungen" style="padding-top:0;">
+  <div class="wrap">
+    <p class="eyebrow">Bewertungen</p>
+    <h2>Kunden, die wiederkommen.</h2>
+    <div class="reviews">
+      <div class="review"><div class="stars">★★★★★</div><p>"Schnell, ehrlich und fair. Der Kostenvoranschlag hat exakt gestimmt, kein Cent mehr."</p><div class="who">— Daniel K.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"Endlich eine Werkstatt, die erklärt, was gemacht wird. Auto lief danach wie neu."</p><div class="who">— Aylin S.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>"HU ohne Stress, Termin am nächsten Tag bekommen. Absolute Empfehlung."</p><div class="who">— Marco B.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kontakt" style="padding-top:0;">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <p class="eyebrow" style="color:#9cc0ff;">Kontakt</p>
+        <h2>Bring dein Auto vorbei.</h2>
+        <p class="sub">Schreib uns kurz, was ansteht, wir melden uns mit einem Termin und einer ehrlichen Einschätzung zurück.</p>
+        <div class="hero-cta" style="margin-top:28px;">
+          <a href="tel:+490000000000" class="btn btn-primary">Anrufen</a>
+          <a href="mailto:info@murati-kfz.de" class="btn btn-ghost">E-Mail schreiben</a>
+        </div>
+      </div>
+      <div class="info">
+        <div class="row"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><b>Adresse</b><span>Musterstraße 12, 12345 Stadt</span></div></div>
+        <div class="row"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><b>Öffnungszeiten</b><span>Mo–Fr 8:00–18:00 · Sa 9:00–13:00</span></div></div>
+        <div class="row"><svg fill="none" stroke-width="2" viewBox="0 0 24 24"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg><div><b>Telefon</b><span>+49 (0) 000 000000</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="brand"><span class="logo">M</span> MURATI&nbsp;KFZ</div>
+    <div>© 2026 Murati KFZ · Kfz-Meisterbetrieb · Impressum · Datenschutz</div>
+  </div>
+</footer>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+const canvas = document.getElementById('car');
+const heroEl = document.querySelector('.hero');
+let renderer, scene, camera, grid;
+const pivot = new THREE.Group();
+let carReady = false;
+let paintMats = [];
+let activeColor = '#1c5fd0';
+let dragging = false, lastX = 0, dragVel = 0;
+const fitCenter = new THREE.Vector3(0, 0.7, 0);
+let fitRadius = 3, fitDist = 9;
+
+function shadowTexture(){
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const x = c.getContext('2d');
+  const g = x.createRadialGradient(128,128,8,128,128,128);
+  g.addColorStop(0,'rgba(0,0,0,0.55)'); g.addColorStop(0.55,'rgba(0,0,0,0.22)'); g.addColorStop(1,'rgba(0,0,0,0)');
+  x.fillStyle = g; x.fillRect(0,0,256,256);
+  return new THREE.CanvasTexture(c);
+}
+
+function init(){
+  renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0x0a0e17, 18, 70);
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+  camera = new THREE.PerspectiveCamera(40, 2, 0.1, 200);
+
+  scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x0a0e17, 0.6));
+  const d1 = new THREE.DirectionalLight(0xffffff, 2.2); d1.position.set(6, 9, 4); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0x88aaff, 1.0); d2.position.set(-7, 4, -5); scene.add(d2);
+
+  grid = new THREE.GridHelper(160, 64, 0x2f7bff, 0x1b2740);
+  grid.material.opacity = 0.14; grid.material.transparent = true; grid.material.depthWrite = false;
+  scene.add(grid);
+
+  const shadow = new THREE.Mesh(
+    new THREE.PlaneGeometry(6.4, 3.2),
+    new THREE.MeshBasicMaterial({ map:shadowTexture(), transparent:true, depthWrite:false, opacity:0.9, toneMapped:false })
+  );
+  shadow.rotation.x = -Math.PI/2; shadow.position.y = 0.012; shadow.renderOrder = 1; scene.add(shadow);
+
+  scene.add(pivot);
+  loadCar();
+  setupInteraction();
+  window.addEventListener('resize', resize);
+  resize();
+  renderer.setAnimationLoop(render);
+}
+
+function frameCamera(){
+  const vFOV = THREE.MathUtils.degToRad(camera.fov);
+  const hFOV = 2 * Math.atan(Math.tan(vFOV/2) * camera.aspect);
+  const dV = fitRadius / Math.sin(vFOV/2);
+  const dH = fitRadius / Math.sin(hFOV/2);
+  const margin = camera.aspect < 1 ? 1.45 : 1.12;   // Hochkant: mehr Luft + Platz fuer Text
+  fitDist = Math.max(dV, dH) * margin;
+}
+
+function loadCar(){
+  const draco = new DRACOLoader();
+  draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+  const loader = new GLTFLoader();
+  loader.setDRACOLoader(draco);
+  loader.load('audi.glb', (gltf)=>{
+    const car = gltf.scene;
+    let box = new THREE.Box3().setFromObject(car);
+    const size = box.getSize(new THREE.Vector3());
+    car.scale.setScalar(4.6 / Math.max(size.x, size.z, 0.001));
+    box = new THREE.Box3().setFromObject(car);
+    const c = box.getCenter(new THREE.Vector3());
+    car.position.x -= c.x; car.position.z -= c.z; car.position.y -= box.min.y;
+    pivot.add(car);
+
+    const sph = new THREE.Box3().setFromObject(car).getBoundingSphere(new THREE.Sphere());
+    fitCenter.copy(sph.center); fitRadius = sph.radius;
+    frameCamera();
+
+    car.traverse(o=>{ if(o.isMesh && o.material){ const ms = Array.isArray(o.material)?o.material:[o.material]; ms.forEach(m=>{ if(m && /paint/i.test(m.name||'')) paintMats.push(m); }); } });
+    if(!paintMats.length){
+      let best=null, bv=-1;
+      car.traverse(o=>{ if(o.isMesh){ const v=(o.geometry&&o.geometry.attributes.position)?o.geometry.attributes.position.count:0; if(v>bv){bv=v; best=o;} } });
+      if(best){ const ms=Array.isArray(best.material)?best.material:[best.material]; ms.forEach(m=>paintMats.push(m)); }
+    }
+    carReady = true; applyColor(activeColor);
+  }, undefined, (err)=>{ console.warn('Audi konnte nicht geladen werden:', err); });
+}
+
+function applyColor(hex){
+  activeColor = hex;
+  paintMats.forEach(m=>{ if(m.color) m.color.set(hex); if('metalness' in m) m.metalness=Math.max(m.metalness,0.85); if('clearcoat' in m) m.clearcoat=1.0; m.needsUpdate=true; });
+}
+
+function setupInteraction(){
+  document.querySelectorAll('#swatches .sw').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('#swatches .sw').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active'); applyColor(b.dataset.c);
+    });
+  });
+  if(window.matchMedia('(pointer: fine)').matches){
+    heroEl.style.cursor = 'grab';
+    heroEl.addEventListener('pointerdown', (e)=>{ if(e.pointerType!=='mouse') return; dragging=true; lastX=e.clientX; heroEl.style.cursor='grabbing'; });
+    window.addEventListener('pointerup', ()=>{ dragging=false; heroEl.style.cursor='grab'; });
+    window.addEventListener('pointermove', (e)=>{ if(!dragging) return; const dx=e.clientX-lastX; lastX=e.clientX; dragVel=dx*0.006; pivot.rotation.y+=dragVel; });
+  }
+}
+
+function resize(){
+  const w = canvas.clientWidth || window.innerWidth;
+  const h = canvas.clientHeight || window.innerHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h; camera.updateProjectionMatrix();
+  frameCamera();
+}
+
+function render(){
+  if(heroEl.getBoundingClientRect().bottom < -40) return;
+  const t = performance.now()/1000;
+  if(carReady && !dragging){ pivot.rotation.y += 0.0026 + dragVel; dragVel *= 0.92; }
+  if(grid) grid.position.z = (-t * 4) % 2;
+  const az = 0.62 + Math.sin(t*0.12) * 0.05;
+  const elev = THREE.MathUtils.degToRad(camera.aspect < 1 ? 13 : 17);
+  const hor = Math.cos(elev) * fitDist;
+  camera.position.set(fitCenter.x + Math.sin(az)*hor, fitCenter.y + Math.sin(elev)*fitDist, fitCenter.z + Math.cos(az)*hor);
+  camera.lookAt(fitCenter);
+  renderer.render(scene, camera);
+}
+
+const hdr = document.getElementById('hdr');
+window.addEventListener('scroll', ()=>{ hdr.classList.toggle('scrolled', window.scrollY > 40); });
+
+try { init(); } catch(e){ console.error('3D-Init fehlgeschlagen:', e); }
+</script>
+</body>
+</html>
