@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="hero-workshop-bay.webp" type="image/webp">
 <style>
 :root{
   --paper:#f6f4ef; --paper-2:#fbfaf7; --white:#ffffff;
@@ -71,24 +72,27 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .mobile-menu .m-cta{ margin-top:auto; display:grid; gap:10px; }
 .x-close{ background:var(--white); border:1px solid var(--line); border-radius:10px; width:44px; height:44px; color:var(--ink); font-size:22px; cursor:pointer; }
 
-/* hero (no car) — Stitch synergy: bold headline + technical workshop surface */
-.hero{ position:relative; padding:150px 0 70px; overflow:hidden;
+/* hero — real workshop bay background, inspired by the Stitch lift direction */
+.hero{ position:relative; padding:150px 0 70px; overflow:hidden; isolation:isolate; background:var(--paper); }
+.hero-bg{ position:absolute; inset:0; z-index:0; pointer-events:none; transform:scale(1.01);
+  background-image:
+    linear-gradient(90deg, rgba(246,244,239,.98) 0%, rgba(246,244,239,.94) 34%, rgba(246,244,239,.52) 57%, rgba(246,244,239,.08) 100%),
+    linear-gradient(180deg, rgba(255,255,255,.34) 0%, rgba(246,244,239,.06) 44%, rgba(246,244,239,.95) 100%),
+    url('hero-workshop-bay.webp');
+  background-size:cover; background-position:center top; }
+.hero-bg::before{ content:""; position:absolute; inset:0;
   background:
-    radial-gradient(48% 52% at 80% 12%, rgba(27,92,255,.18) 0%, rgba(27,92,255,0) 62%),
-    radial-gradient(44% 38% at 18% 86%, rgba(224,128,31,.10) 0%, rgba(224,128,31,0) 62%),
-    linear-gradient(180deg,#fff 0%, var(--paper) 100%); }
-.hero::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.72;
-  background-image:linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size:40px 40px; -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 58%,rgba(0,0,0,.2) 100%); mask-image:linear-gradient(90deg,#000 0%,#000 58%,rgba(0,0,0,.2) 100%); }
-.hero::after{ content:""; position:absolute; right:-7vw; top:118px; width:min(52vw,720px); height:520px; pointer-events:none; opacity:.78;
-  background:
-    linear-gradient(135deg, transparent 0 42%, rgba(27,92,255,.14) 42% 43%, transparent 43% 100%),
-    linear-gradient(150deg, rgba(24,26,31,.08), transparent 54%),
-    repeating-linear-gradient(90deg, rgba(27,92,255,.08) 0 1px, transparent 1px 34px);
-  border-left:1px solid rgba(27,92,255,.12);
-  transform:skewX(-10deg); }
+    radial-gradient(42% 44% at 78% 18%, rgba(27,92,255,.16) 0%, rgba(27,92,255,0) 66%),
+    radial-gradient(40% 30% at 20% 90%, rgba(224,128,31,.10) 0%, rgba(224,128,31,0) 65%);
+  mix-blend-mode:multiply; }
+.hero-bg::after{ content:""; position:absolute; inset:0; opacity:.46;
+  background-image:linear-gradient(rgba(231,227,218,.72) 1px, transparent 1px), linear-gradient(90deg, rgba(231,227,218,.72) 1px, transparent 1px);
+  background-size:40px 40px;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 44%,rgba(0,0,0,.18) 74%,rgba(0,0,0,0) 100%);
+  mask-image:linear-gradient(90deg,#000 0%,#000 44%,rgba(0,0,0,.18) 74%,rgba(0,0,0,0) 100%); }
 .hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1.08fr .92fr; gap:54px; align-items:center; }
 @media(max-width:940px){ .hero-grid{ grid-template-columns:1fr; gap:30px; } }
+.hero-copy{ position:relative; }
 .eyebrow-line{ display:inline-flex; align-items:center; gap:11px; font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.1em; color:var(--blue); text-transform:uppercase; }
 .eyebrow-line .pulse{ width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 0 rgba(27,92,255,.4); animation:pulse 2.4s infinite; }
 @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(27,92,255,.4);} 70%{box-shadow:0 0 0 10px rgba(27,92,255,0);} 100%{box-shadow:0 0 0 0 rgba(27,92,255,0);} }
@@ -96,8 +100,8 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .hero h1 .accent{ color:var(--blue); }
 .hero .lead{ margin-top:22px; color:var(--muted); font-size:clamp(16px,1.5vw,20px); line-height:1.6; max-width:46ch; }
 .hero-cta{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
-/* hero contact/trust card (replaces the car) */
-.hero-card{ background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:22px; overflow:hidden; box-shadow:0 34px 70px -44px rgba(24,26,31,.4); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+/* hero contact/trust card */
+.hero-card{ justify-self:end; align-self:end; width:min(100%,390px); margin-top:132px; background:rgba(255,255,255,.86); border:1px solid rgba(255,255,255,.74); border-radius:20px; overflow:hidden; box-shadow:0 30px 70px -38px rgba(24,26,31,.55); backdrop-filter:blur(14px) saturate(135%); -webkit-backdrop-filter:blur(14px) saturate(135%); }
 .hero-visual{ position:relative; min-height:210px; padding:22px; border-bottom:1px solid var(--line); overflow:hidden;
   background:
     radial-gradient(90% 80% at 85% 0%, rgba(27,92,255,.18), transparent 62%),
@@ -116,6 +120,8 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .bay-bars i{ display:block; height:10px; border-radius:999px; background:rgba(27,92,255,.16); overflow:hidden; }
 .bay-bars i::before{ content:""; display:block; width:var(--w); height:100%; border-radius:inherit; background:var(--blue); }
 .hero-card .panel-body{ padding:24px; }
+.workshop-card .bay-label{ display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono'; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue); font-weight:600; }
+.workshop-card .bay-label::before{ content:""; width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 5px rgba(27,92,255,.12); }
 .hero-card .rate{ display:flex; align-items:center; gap:10px; }
 .hero-card .rate .stars{ color:#f5a623; letter-spacing:2px; font-size:16px; }
 .hero-card .rate b{ font-size:18px; color:var(--ink); }
@@ -124,6 +130,7 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .hero-card .status i{ width:8px; height:8px; border-radius:50%; background:#27c281; display:inline-block; }
 .hero-card .hcta{ margin-top:18px; display:grid; gap:10px; }
 .hero-card .hcta .btn{ width:100%; }
+.workshop-card .bay-note{ margin-top:14px; color:var(--muted); font-size:14px; line-height:1.48; }
 .hero-card .htrust{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:12px 14px; }
 .hero-card .htrust div{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text); font-weight:600; }
 .hero-card .htrust svg{ width:17px; height:17px; stroke:var(--blue); flex:none; }
@@ -136,7 +143,14 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .stat span{ margin-top:4px; display:block; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; }
 @media(max-width:620px){
   .hero{ padding:112px 0 54px; }
+  .hero-bg{ height:515px; inset:0 0 auto; background-position:61% top;
+    background-image:
+      linear-gradient(90deg, rgba(246,244,239,.96) 0%, rgba(246,244,239,.86) 48%, rgba(246,244,239,.30) 100%),
+      linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(246,244,239,.30) 58%, rgba(246,244,239,1) 100%),
+      url('hero-workshop-bay.webp'); }
+  .hero-bg::after{ opacity:.34; }
   .hero h1{ max-width:10.5ch; }
+  .hero-card{ justify-self:stretch; width:100%; margin-top:6px; border-color:var(--line); }
   .hero-visual{ min-height:165px; padding:16px; }
   .hero-card .panel-body{ padding:18px; }
   .scan-card{ width:100%; }
@@ -292,8 +306,9 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
   </div>
 </div>
 
-<!-- HERO (no car) -->
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
@@ -306,22 +321,12 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
           <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
         </div>
       </div>
-      <aside class="hero-card reveal">
-        <div class="hero-visual" aria-hidden="true">
-          <div class="scan-card">
-            <div class="scan-top"><b>Diagnose-Check</b><span>Live Befund</span></div>
-            <div class="scan-grid">
-              <div class="scan-cell"><span>Fehlercode</span><b>0</b></div>
-              <div class="scan-cell"><span>Status</span><b class="ok">OK</b></div>
-              <div class="scan-cell"><span>Termin</span><b>24h</b></div>
-              <div class="scan-cell"><span>Preis</span><b>fix</b></div>
-            </div>
-          </div>
-          <div class="bay-bars"><i style="--w:78%"></i><i style="--w:56%"></i><i style="--w:88%"></i></div>
-        </div>
+      <aside class="hero-card workshop-card reveal">
         <div class="panel-body">
+          <div class="bay-label">Werkstatt live</div>
           <div class="rate"><span class="stars">★★★★★</span><b>4,9</b><span>Google-Bewertungen</span></div>
           <div class="status"><i></i> Heute geöffnet · Mo–Fr 08–18 Uhr</div>
+          <p class="bay-note">Hebebühne, Diagnoseplatz und direkter Fahrzeug-Check statt leerer Agenturfläche.</p>
           <div class="hcta">
             <a class="btn btn-wa" data-wa>WhatsApp schreiben</a>
             <a class="btn btn-ghost" data-tel>Anrufen: <span data-tel-text>0231 / 000 00 00</span></a>
