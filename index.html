@@ -37,6 +37,9 @@ h1,h2,h3{ font-family:'Archivo',sans-serif; letter-spacing:-.025em; line-height:
 .brand .wm{ display:flex; flex-direction:column; line-height:1; }
 .brand .wm b{ font-weight:900; font-size:19px; letter-spacing:.01em; color:var(--ink); }
 .brand .wm small{ font-family:'JetBrains Mono'; font-weight:500; font-size:9.5px; letter-spacing:.26em; color:var(--blue); margin-top:4px; }
+.logo-img{ height:42px; width:auto; display:block; transition:height .3s var(--ease); }
+header.scrolled .logo-img{ height:34px; }
+@media(max-width:520px){ .logo-img{ height:36px; } }
 
 /* buttons */
 .btn{ display:inline-flex; align-items:center; justify-content:center; gap:9px; font-weight:700; font-size:15px; padding:13px 22px; border-radius:12px; cursor:pointer; border:1px solid transparent; transition:transform .18s var(--ease), box-shadow .18s var(--ease), background .18s, color .18s, border-color .18s; white-space:nowrap; }
@@ -218,10 +221,7 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
 
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#top" class="brand">
-      <span class="tile"><svg viewBox="0 0 64 64"><path d="M14 46V20l18 17 18-17v26" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="wm"><b>MURATI</b><small>KFZ-WERKSTATT</small></span>
-    </a>
+    <a href="#top" class="brand"><img class="logo-img" src="logo-murati.png" alt="MURATI KFZ-WERKSTATT — Freie Kfz-Werkstatt Dortmund"></a>
     <nav class="nav-links">
       <a href="#leistungen">Leistungen</a>
       <a href="#werkstatt">Werkstatt</a>
@@ -238,7 +238,7 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
 
 <div class="mobile-menu" id="mobileMenu">
   <div class="top">
-    <span class="brand"><span class="tile"><svg viewBox="0 0 64 64"><path d="M14 46V20l18 17 18-17v26" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="wm"><b>MURATI</b><small>KFZ-WERKSTATT</small></span></span>
+    <span class="brand"><img class="logo-img" src="logo-murati.png" alt="MURATI KFZ-WERKSTATT"></span>
     <button class="x-close" id="xClose" aria-label="Menü schließen">✕</button>
   </div>
   <a class="m-link" href="#leistungen">Leistungen</a>
@@ -407,7 +407,7 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <span class="brand"><span class="tile"><svg viewBox="0 0 64 64"><path d="M14 46V20l18 17 18-17v26" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="wm"><b>MURATI</b><small>KFZ-WERKSTATT</small></span></span>
+        <span class="brand"><img class="logo-img" src="logo-murati.png" alt="MURATI KFZ-WERKSTATT"></span>
         <p>Freie, markenunabhängige Kfz-Werkstatt in Dortmund. Wartung, Diagnose und Reparatur – transparent und dokumentiert.</p>
       </div>
       <div class="foot-col"><h4>Werkstatt</h4><a href="#leistungen">Leistungen</a><a href="#werkstatt">Über uns</a><a href="#bewertungen">Bewertungen</a><a href="#kontakt">Kontakt & Anfahrt</a></div>
