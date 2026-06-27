@@ -71,13 +71,23 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .mobile-menu .m-cta{ margin-top:auto; display:grid; gap:10px; }
 .x-close{ background:var(--white); border:1px solid var(--line); border-radius:10px; width:44px; height:44px; color:var(--ink); font-size:22px; cursor:pointer; }
 
-/* hero (no car) — Stitch synergy: bold headline + stats + technical texture */
+/* hero (no car) — Stitch synergy: bold headline + technical workshop surface */
 .hero{ position:relative; padding:150px 0 70px; overflow:hidden;
-  background:radial-gradient(55% 55% at 82% 8%, var(--blue-tint) 0%, rgba(27,92,255,0) 60%), linear-gradient(180deg,#fff 0%, var(--paper) 100%); }
-.hero::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.6;
+  background:
+    radial-gradient(48% 52% at 80% 12%, rgba(27,92,255,.18) 0%, rgba(27,92,255,0) 62%),
+    radial-gradient(44% 38% at 18% 86%, rgba(224,128,31,.10) 0%, rgba(224,128,31,0) 62%),
+    linear-gradient(180deg,#fff 0%, var(--paper) 100%); }
+.hero::before{ content:""; position:absolute; inset:0; pointer-events:none; opacity:.72;
   background-image:linear-gradient(var(--line-soft) 1px, transparent 1px), linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-  background-size:46px 46px; -webkit-mask-image:radial-gradient(circle at 72% 18%, #000, transparent 72%); mask-image:radial-gradient(circle at 72% 18%, #000, transparent 72%); }
-.hero-grid{ position:relative; display:grid; grid-template-columns:1.25fr .75fr; gap:44px; align-items:center; }
+  background-size:40px 40px; -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 58%,rgba(0,0,0,.2) 100%); mask-image:linear-gradient(90deg,#000 0%,#000 58%,rgba(0,0,0,.2) 100%); }
+.hero::after{ content:""; position:absolute; right:-7vw; top:118px; width:min(52vw,720px); height:520px; pointer-events:none; opacity:.78;
+  background:
+    linear-gradient(135deg, transparent 0 42%, rgba(27,92,255,.14) 42% 43%, transparent 43% 100%),
+    linear-gradient(150deg, rgba(24,26,31,.08), transparent 54%),
+    repeating-linear-gradient(90deg, rgba(27,92,255,.08) 0 1px, transparent 1px 34px);
+  border-left:1px solid rgba(27,92,255,.12);
+  transform:skewX(-10deg); }
+.hero-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1.08fr .92fr; gap:54px; align-items:center; }
 @media(max-width:940px){ .hero-grid{ grid-template-columns:1fr; gap:30px; } }
 .eyebrow-line{ display:inline-flex; align-items:center; gap:11px; font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.1em; color:var(--blue); text-transform:uppercase; }
 .eyebrow-line .pulse{ width:8px; height:8px; border-radius:50%; background:var(--blue); box-shadow:0 0 0 0 rgba(27,92,255,.4); animation:pulse 2.4s infinite; }
@@ -87,7 +97,25 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .hero .lead{ margin-top:22px; color:var(--muted); font-size:clamp(16px,1.5vw,20px); line-height:1.6; max-width:46ch; }
 .hero-cta{ margin-top:30px; display:flex; gap:12px; flex-wrap:wrap; }
 /* hero contact/trust card (replaces the car) */
-.hero-card{ background:var(--white); border:1px solid var(--line); border-radius:20px; padding:26px; box-shadow:0 34px 70px -44px rgba(24,26,31,.4); }
+.hero-card{ background:rgba(255,255,255,.9); border:1px solid var(--line); border-radius:22px; overflow:hidden; box-shadow:0 34px 70px -44px rgba(24,26,31,.4); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); }
+.hero-visual{ position:relative; min-height:210px; padding:22px; border-bottom:1px solid var(--line); overflow:hidden;
+  background:
+    radial-gradient(90% 80% at 85% 0%, rgba(27,92,255,.18), transparent 62%),
+    linear-gradient(145deg,#ffffff 0%,#edf3ff 46%,#f7f6f1 100%); }
+.hero-visual::before{ content:""; position:absolute; inset:0; opacity:.55; background-image:linear-gradient(rgba(27,92,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(27,92,255,.12) 1px, transparent 1px); background-size:24px 24px; }
+.hero-visual::after{ content:""; position:absolute; right:-42px; bottom:-56px; width:270px; height:160px; border-radius:38px 38px 0 0; border:16px solid rgba(24,26,31,.10); border-bottom:0; transform:rotate(-7deg); }
+.scan-card{ position:relative; z-index:1; width:min(100%,330px); border:1px solid rgba(24,26,31,.12); border-radius:16px; background:rgba(255,255,255,.82); box-shadow:0 24px 48px -32px rgba(24,26,31,.45); overflow:hidden; }
+.scan-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 14px; border-bottom:1px solid var(--line); font-family:'JetBrains Mono'; font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+.scan-top b{ color:var(--ink); font-family:'Archivo'; font-size:13px; letter-spacing:0; text-transform:none; }
+.scan-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); }
+.scan-cell{ min-height:72px; padding:14px; background:rgba(255,255,255,.9); }
+.scan-cell span{ display:block; font-family:'JetBrains Mono'; font-size:10px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase; }
+.scan-cell b{ display:block; margin-top:5px; font-size:22px; line-height:1; color:var(--ink); }
+.scan-cell .ok{ color:#168354; }
+.bay-bars{ position:absolute; z-index:1; right:22px; bottom:22px; display:grid; gap:8px; width:150px; }
+.bay-bars i{ display:block; height:10px; border-radius:999px; background:rgba(27,92,255,.16); overflow:hidden; }
+.bay-bars i::before{ content:""; display:block; width:var(--w); height:100%; border-radius:inherit; background:var(--blue); }
+.hero-card .panel-body{ padding:24px; }
 .hero-card .rate{ display:flex; align-items:center; gap:10px; }
 .hero-card .rate .stars{ color:#f5a623; letter-spacing:2px; font-size:16px; }
 .hero-card .rate b{ font-size:18px; color:var(--ink); }
@@ -100,12 +128,24 @@ header.scrolled{ background:rgba(246,244,239,.86); backdrop-filter:blur(14px) sa
 .hero-card .htrust div{ display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text); font-weight:600; }
 .hero-card .htrust svg{ width:17px; height:17px; stroke:var(--blue); flex:none; }
 /* stats band (Stitch synergy) */
-.stats{ position:relative; margin-top:54px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.stats{ position:relative; z-index:1; margin-top:48px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
 @media(max-width:760px){ .stats{ grid-template-columns:repeat(2,1fr); gap:14px; } }
-.stat{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; }
+.stat{ background:rgba(255,255,255,.88); border:1px solid var(--line); border-radius:var(--radius-sm); padding:20px; box-shadow:0 18px 42px -34px rgba(24,26,31,.35); }
 .stat b{ display:block; font-size:clamp(26px,3vw,34px); font-weight:900; color:var(--ink); letter-spacing:-.02em; }
 .stat b .s{ color:var(--blue); }
 .stat span{ margin-top:4px; display:block; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:.04em; color:var(--muted); text-transform:uppercase; }
+@media(max-width:620px){
+  .hero{ padding:112px 0 54px; }
+  .hero h1{ max-width:10.5ch; }
+  .hero-visual{ min-height:165px; padding:16px; }
+  .hero-card .panel-body{ padding:18px; }
+  .scan-card{ width:100%; }
+  .scan-top{ padding:10px 12px; }
+  .scan-cell{ min-height:58px; padding:10px 12px; }
+  .scan-cell b{ font-size:19px; }
+  .bay-bars{ display:none; }
+  .hero-card .htrust{ grid-template-columns:1fr; }
+}
 
 /* sections */
 section.block{ padding:clamp(70px,9vw,118px) 0; position:relative; }
@@ -210,9 +250,9 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
 @media(max-width:520px){ .fab{ width:54px; height:54px; right:16px; bottom:16px; } }
 
 /* reveal */
-.reveal{ opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal{ opacity:1; transform:none; transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .reveal.in{ opacity:1; transform:none; }
-.stagger > *{ opacity:0; transform:translateY(22px); transition:opacity .6s var(--ease), transform .6s var(--ease); }
+.stagger > *{ opacity:1; transform:none; transition:opacity .6s var(--ease), transform .6s var(--ease); }
 .stagger.in > *{ opacity:1; transform:none; }
 .stagger.in > *:nth-child(1){transition-delay:.04s}.stagger.in > *:nth-child(2){transition-delay:.10s}.stagger.in > *:nth-child(3){transition-delay:.16s}.stagger.in > *:nth-child(4){transition-delay:.22s}.stagger.in > *:nth-child(5){transition-delay:.28s}.stagger.in > *:nth-child(6){transition-delay:.34s}
 @media(prefers-reduced-motion:reduce){ .reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important;} html{scroll-behavior:auto;} .eyebrow-line .pulse{animation:none;} }
@@ -267,17 +307,31 @@ footer{ background:var(--paper-2); color:var(--muted); padding:56px 0 30px; bord
         </div>
       </div>
       <aside class="hero-card reveal">
-        <div class="rate"><span class="stars">★★★★★</span><b>4,9</b><span>Google-Bewertungen</span></div>
-        <div class="status"><i></i> Heute geöffnet · Mo–Fr 08–18 Uhr</div>
-        <div class="hcta">
-          <a class="btn btn-wa" data-wa>WhatsApp schreiben</a>
-          <a class="btn btn-ghost" data-tel>Anrufen: <span data-tel-text>0231 / 000 00 00</span></a>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="scan-card">
+            <div class="scan-top"><b>Diagnose-Check</b><span>Live Befund</span></div>
+            <div class="scan-grid">
+              <div class="scan-cell"><span>Fehlercode</span><b>0</b></div>
+              <div class="scan-cell"><span>Status</span><b class="ok">OK</b></div>
+              <div class="scan-cell"><span>Termin</span><b>24h</b></div>
+              <div class="scan-cell"><span>Preis</span><b>fix</b></div>
+            </div>
+          </div>
+          <div class="bay-bars"><i style="--w:78%"></i><i style="--w:56%"></i><i style="--w:88%"></i></div>
         </div>
-        <div class="htrust">
-          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Markenunabhängig</div>
-          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Festpreis vorab</div>
-          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Hol- & Bringservice</div>
-          <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Garantie</div>
+        <div class="panel-body">
+          <div class="rate"><span class="stars">★★★★★</span><b>4,9</b><span>Google-Bewertungen</span></div>
+          <div class="status"><i></i> Heute geöffnet · Mo–Fr 08–18 Uhr</div>
+          <div class="hcta">
+            <a class="btn btn-wa" data-wa>WhatsApp schreiben</a>
+            <a class="btn btn-ghost" data-tel>Anrufen: <span data-tel-text>0231 / 000 00 00</span></a>
+          </div>
+          <div class="htrust">
+            <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Markenunabhängig</div>
+            <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Festpreis vorab</div>
+            <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Hol- & Bringservice</div>
+            <div><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/></svg> Garantie</div>
+          </div>
         </div>
       </aside>
     </div>
